@@ -1,0 +1,69 @@
+<h1>Building a prototyping tool to enable new ideas</h1>
+<p>
+  In late 2022, I conceived and built a tool for Uber designers to work on cartography and geospatial visualizations in tandem.
+</p>
+<p>
+  That tool helped me lead a redesign of the Uber driver/courier app's most used feature -- the main map -- from the ground up.
+</p>
+<p>
+  The tooling I built sped up the redesign while improving the quality of every stage of output.
+</p>
+
+<hr class="lg">
+
+<div class="media-container">
+  <p class="media-caption">Play around with it here, or see design deliverables below &darr;</p>
+  <div id="carto-heatmap-container">
+    <div id="carto-heatmap-controls-container">
+      <div id="map-style-toggles">
+        <input type="radio" name="style" id="before" value="before">
+        <label for="before">Before</label>
+        |
+        <input type="radio" name="style" id="after" value="after" checked>
+        <label for="after">After</label>
+      </div>
+      <div class="inline-input">
+        <label for="map-data-slider-time">Time</label>
+        <input type="range" name="time" id="map-data-slider-time" 
+            min="1" max="24" value="13">
+      </div>
+      <div class="inline-input">
+        <label for="map-data-slider-color">Color</label>
+        <input type="range" name="time" id="map-data-slider-color"
+            min="2" max="15" step="1" value="10" >
+      </div>
+    </div>
+    <div id="carto-heatmap"></div>
+  </div>
+</div>
+
+<hr class="sm">
+
+<p>
+  This infrastructure allowed me to explore more radical ideas faster, at high fidelity, with production code as a deliverable.
+</p>
+
+<p>
+  The new design completely reshaped the map into a stark canvas for data visualization.
+</p>
+
+<p>
+  This launch is still under development at Uber, but at the time I left, it had been presented company-wide and even in board meetings.
+</p>
+
+<hr class="sm">
+
+<div class="media-container">
+  <p class="media-caption">
+    Some motion studies from presentations to Uber's CPO 
+    <!-- (I was responsible for the basemap and data visualization design; another designer led
+    the non-map UI shown here)  -->
+    &darr;
+  </p>
+  <div class="media-overlapping">
+    <img src="img/ehm-select-tilt.gif" id="ehm-select" width="500">
+    <img src="img/ehm-time-tilt.gif" id="ehm-time" width="500">
+  </div>
+</div>
+
+<hr class="lg">

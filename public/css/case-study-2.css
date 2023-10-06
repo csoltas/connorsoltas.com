@@ -1,0 +1,161 @@
+header {
+  margin-bottom: 48px;
+}
+
+main {
+  align-items: center;
+  overflow-x: visible;
+}
+
+hr {
+  border: none;
+  background: none;
+  color: none;
+}
+
+hr.lg {
+  height: 100px;
+}
+
+hr.sm {
+  height: 64px;
+}
+
+.media-container {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  overflow-y: visible;
+}
+
+.media-container::-webkit-scrollbar {
+  display: none; /* hides scrollbar for Chrome browser */
+}
+
+.media-caption {
+  width: 240px;
+}
+
+.media-overlapping > img {
+  display: block;
+  position: relative;
+  filter: drop-shadow(-72px 0px 100px rgba(0,0,0, 0.06))
+          drop-shadow(-2px 16px 12px rgba(0,0,0, 0.2));
+}
+
+img#activityfeed {
+  padding-left: 300px;
+  margin-bottom: -500px;
+  z-index: 100;
+}
+
+iframe {
+  border: 1px solid #000;
+}
+
+.media-scroll {
+  align-self: flex-start; /* Left-aligns the media-scroll-container within main-container */
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 160px;
+  margin: 0 calc((100vw - 240px) / 2);
+}
+
+#carto-heatmap-container {
+  border: solid #000 1px;
+  padding: 24px;
+}
+
+#carto-heatmap {
+  width: 1024px;
+  height: 748px;
+  border-radius: 16px;
+}
+
+.carousel {
+  align-self: flex-start; /* Left-aligns the carousel-container within main-container */
+  position: relative; /* Establishes a new positioning context for the carousel controller */
+  display: flex;
+  flex-direction: row;
+  align-items: start;
+  gap: 32px;
+}
+
+.slides-container {
+  display: flex;
+  flex-direction: row;
+  transition: transform 0.2s ease;
+  gap: 160px;
+}
+
+.slides-container.slide-count-3 {
+  width: calc((240 + 160px) * 3 - 160px); /* 100% of the main-container width times the number of sections */
+}
+
+.slides-container.slide-count-4 {
+  width: calc((240 + 160px) * 4 - 160px); /* 100% of the main-container width times the number of sections */
+}
+
+.carousel-controller {
+  position: absolute;
+  left: -100px;
+  display: flex;
+  align-items: center;
+  z-index: 999;
+}
+
+.controller-link {
+  text-decoration: none;
+  color: #ccc; /* Default to disabled */
+  cursor: not-allowed;
+}
+
+.controller-link.enabled, .controller-link.enabled:hover {
+  text-decoration: none;
+  color: #0000ff; /* Enabled color */
+  cursor: pointer;
+}
+
+.controller-link:hover {
+  text-decoration: none;
+  color: #ccc;
+}
+
+.carousel-slide {
+  width: 240px;
+}
+
+.carousel-slide > a.active {
+  color: #000;
+  pointer-events: none;
+  cursor: default;  
+}
+
+.carousel-slide > p:not(.active) {
+  color: #ccc;
+}
+
+ol {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: list-counter; /* Initialize a counter for manual list numbering */
+}
+
+ol li {
+  counter-increment: list-counter; /* Increments the counter */
+  position: relative;
+}
+
+ol li:before {
+  content: counter(list-counter) ""; /* Display the counter value */
+  position: absolute;
+  left: -32px;
+}

@@ -1,0 +1,21 @@
+.case-studies {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  counter-reset: list-counter; /* Initialize a counter for manual list numbering */
+}
+
+.case-studies li {
+  counter-increment: list-counter; /* Increments the counter */
+  position: relative;
+  /* line-height: 14px; */
+}
+
+.case-studies li:before {
+  content: counter(list-counter) ""; /* Display the counter value */
+  position: absolute;
+  left: -32px;
+}

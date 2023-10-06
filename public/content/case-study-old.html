@@ -1,0 +1,273 @@
+<h1>Technical prototyping with data</h1>
+<p>
+  In late 2022, I conceived and built a tool for Uber designers to work on cartography and geospatial visualizations in tandem.
+</p>
+<p>
+  That tool helped me lead a redesign of the Uber driver/courier app's most used feature -- the main map -- from the ground up.
+</p>
+<p>The tooling I built sped up the redesign while improving the quality of every stage of output along the way.</p>
+
+<hr class="lg">
+
+<div class="media-container">
+  <p class="media-caption">Play around with the tool yourself &darr;</p>
+  <div id="carto-heatmap-container">
+    <div id="carto-heatmap"></div>
+    <a href="">Before</a> | <a href="">After</a>
+    <div>
+      <label for="time">Time</label>
+      <input type="range" name="time" min="0" max="12">
+    </div>
+    <div>
+      <label for="time">Color</label>
+      <input type="range" name="time" min="1" max="10">
+    </div>
+</div>
+</div>
+
+<hr class="sm">
+
+<h2>Why I made this</h2>
+<p>
+  I was tasked with redesigning the app's main map, which had become a jumbled mess drivers
+  found useless.
+</p>
+
+<p>
+  I wasn't tasked with building a new tool. But I knew one would help me redesign the map 
+  better and faster, so I set out to build the simplest sufficient tool for the job.
+</p>
+
+<h2>What I made</h2>
+<p>
+  A tiny web app making it easy for me (and future designers) to prototype new basemap styles & data
+  visualizations interactively, at full fidelity, with real Uber data.
+</p>
+
+<h2>How it delivered</h2>
+<p>
+  The new design completely reshaped our main map into a stark canvas for data visualization.
+</p>
+
+<p>
+  The tooling I built sped up that redesign, while improving the quality of every 
+  intermediate stage of output.
+</p>
+
+<p>
+  This launch is still under development/review at Uber.
+</p>
+
+<hr class="lg">
+
+<div class="carousel" id="carousel1">
+  <div class="carousel-controller">
+    <a href="#" class="controller-link prev-slide">&larr;</a>
+    &nbsp;
+    <span class="current-slide">1</span>/<span>3</span>
+    &nbsp;
+    <a href="#" class="controller-link next-slide enabled">&rarr;</a>
+  </div>
+  <div class="slides-container slide-count-3">
+    <div class="carousel-slide">
+      <h3 class="carousel-slide-header"><a href="slide-1" class="active">This was the driver app 😔</a></h3>
+      <br>
+      <p class="active">
+        I was tasked with fixing the app's main map: while intended to show real-time potential earnings, in 
+        practice it was a jumbled mess drivers found useless.
+      </p>
+    </div>
+    <div class="carousel-slide">
+      <h3 class="carousel-slide-header"><a href="slide-2">Static tools were to blame</a></h3>
+      <br>
+      <p>
+        How had this happened? Tools like Figma made it difficult to test map UI choices across many zoom levels and 
+        market conditions. So designers rarely did.
+      </p>
+    </div>
+    <div class="carousel-slide">
+      <h3 class="carousel-slide-header"><a href="slide-3">To design, we needed to see</a></h3>
+      <br>
+      <p>
+        To avoid the same fate, we'd need to make it easy for future designers -- and me -- to rapidly test map styles 
+        and data visualizations across all possible states.
+      </p>
+    </div>
+  </div>
+</div>
+
+<p>
+  &darr; <br> &darr; <br> &darr;
+</p>
+
+<!-- Add caption/hint that annotations will appear on hover -->
+<div class="media-container" id="carousel1-media">
+  <p class="media-caption"></p>
+  <img src="img/statusquo.jpg" width="375px" height="auto">
+</div>
+
+<hr class="sm">
+
+<h3>The concept</h3>
+
+<p>
+  While I wasn't tasked with building a new tool, I knew it could help me redesign the map better and faster.
+</p>
+
+<p>
+  So I set out to build the simplest sufficient tool: a tiny web app to prototype map visuals & interaction design, at full 
+  fidelity, with real Uber data.
+</p>
+
+<hr class="sm">
+
+<h3>Here's what I did</h3>
+
+<ol>
+    <li>
+      Learned enough <a href="https://www.mapbox.com/mapbox-gljs" target="_blank">Mapbox GL JS</a> and
+      <a href="https://deck.gl/" target="_blank">DeckGL</a> [and a few other libraries] to do the job.
+    </li>
+    <li>
+      Built the web app I needed. Documented a workflow that I taught to others.
+    </li>
+    <li>
+      Used the web app to redesign the map from first principles.
+    </li>
+    <li>
+      Iterated on map design in constant communication with non-map designers and Uber's product execs.
+    </li>
+</ol>
+
+<div class="media-container">
+  <p class="media-caption">Scroll horizontally &rarr;</p>
+  <div class="media-scroll">
+    <img src="img/jupyter.jpg">
+    <img src="img/webapp.jpg">
+    <img src="img/viridis.jpg">
+    <img src="img/thematicmapslide.jpg">
+    <img src="img/thematicv1style.jpg">
+  </div>
+</div>
+
+<hr class="lg">
+
+<h3>Deliverables</h3>
+
+<!-- 
+  <p>
+    The new design stripped out all distractions from drivers' top intent when they open
+    the app: checking potential earnings.
+  </p>
+
+  <p>  
+    To do this, I heavily curtailed the use of color and contrast.
+    I also combined Uber's conflicting earnings proxies into one [<a href="">note</a>].
+  </p>
+
+  <p>I delivered...</p> 
+-->
+
+
+<p>
+  The new design completely reshaped our main map into a stark canvas for data visualization.
+  [See <a href="">other case study</a>]
+</p>
+
+<p>
+  Moreover the design deliverables were essentially production code -- little effort
+  was needed to go from design to deployment.
+</p>
+
+<p>
+  Here's a sampling:
+</p>
+
+<hr class="sm">
+
+<div class="carousel" id="carousel2">
+  <div class="carousel-controller">
+    <a href="#" class="controller-link prev-slide">&larr;</a>
+    &nbsp;
+    <span class="current-slide">1</span>/<span>4</span>
+    &nbsp;
+    <a href="#" class="controller-link next-slide enabled">&rarr;</a>
+  </div>
+  <div class="slides-container slide-count-4">
+    <div class="carousel-slide">
+      <h3 class="carousel-slide-header"><a href="slide-1" class="active">Eng-ready map stylesheets</a></h3>
+      <br>
+      <p class="active">
+        JSON to swap out for our production map style.
+      </p>
+    </div>
+    <div class="carousel-slide">
+      <h3 class="carousel-slide-header"><a href="slide-2">Data viz styling & logic</a></h3>
+      <br>
+      <p>
+        Perceptually uniform, colorblind-safe mappings from data values to heatmap colors.
+      </p>
+    </div>
+    <div class="carousel-slide">
+      <h3 class="carousel-slide-header"><a href="slide-3">Map assets for collaborators</a></h3>
+      <br>
+      <p>
+        A system of map UI components in Figma, across zoom levels and marketplace conditions.
+      </p>
+    </div>
+    <div class="carousel-slide">
+      <h3 class="carousel-slide-header"><a href="slide-4">Prototypes & animations</a></h3>
+      <br>
+      <p>
+        High-polish artifacts representing the new map design -- what I presented to Uber execs.
+      </p>
+    </div>
+  </div>
+</div>
+
+<p>
+  &darr; <br> &darr; <br> &darr;
+</p>
+
+<div class="media-container" id="carousel2-media">
+  <!-- <p class="media-caption"></p> -->
+  <img src="" width="1024" height="748px">
+</div>
+
+<hr class="sm">
+
+<h3>Impact discussion</h3>
+
+<p>
+  My team was only able to confidently propose such a radical new direction because we could easily explore 
+  all its downstream consequences.
+</p>
+
+<p>
+  And Uber execs could see those consequences, too -- saving them time that often gets lost in
+  slide decks, and enabling conversations that were just too abstract to have beforehand.
+</p>
+
+<p>
+  This sped up the redesign project while also improving the quality of every intermediate stage of output.
+</p>
+
+<hr class="sm">
+
+<p>
+  Even further, the tool I built acted as a prototype we could bring directly into user testing, letting us gather
+  feedback that only built confidence in our direction.
+</p>
+
+<p>
+  As a result, the redesign encouraged Uber to launch a unified visualization of potential earnings on the main map.
+  [See <a href="">other case study</a>.]
+</p>
+
+<!-- <p>
+  It also motivated product teams to monitor how pricing changes affected net driver earnings,
+  given the new product direction would bring higher scrutiny to it. (We fundamentally believe that scrutiny is
+  a good thing, both for Uber and for workers generally.)
+</p> -->
+
+<hr class="lg">

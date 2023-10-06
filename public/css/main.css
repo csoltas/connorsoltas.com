@@ -1,0 +1,109 @@
+body {
+  margin: 0;
+  background-color: #fff;
+  font-family: 'IBM Plex Sans Condensed', sans-serif;
+  font-size: 14px;
+  text-align: justify;
+  color: #000;
+  overflow-x: hidden;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: #fff;
+  padding: 24px;
+  display: flex;
+  align-items: center;
+}
+
+.links {
+  display: flex;
+  justify-content: space-between;
+  width: 240px;
+  margin: 0 auto;
+  font-weight: lighter;
+}
+
+a {
+  font-family: 'IBM Plex Mono';
+  color: #0000ff;
+  /* font-weight: bold; */
+  text-decoration: none;
+  padding: 0;
+}
+
+a:visited {
+  color: #0000ff;
+}
+
+a:hover {
+  color: #0000ff;
+  text-decoration: underline;
+}
+
+a.active {
+  color: #000;
+  /* font-weight: normal; */
+  pointer-events: none;
+  cursor: default;  
+}
+
+.name-link {
+  color: #000;
+  font-weight: normal;
+  text-decoration: none;
+  position: absolute;
+}
+
+.name-link:hover {
+  color: #000;
+  text-decoration: underline;
+}
+
+.name-link:visited {
+  color: #000;
+}
+
+main {
+  width: 240px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 24px;
+}
+
+p {
+  margin: 0;
+  width: 100%;
+}
+
+p.text-justify-last {
+  -moz-text-align-last: justify; /* For Firefox prior 58.0 */
+  text-align-last: justify;
+}
+
+span.wide {
+  font-family: 'IBM Plex Mono', sans-serif;
+  /* letter-spacing: 2px; */
+}
+
+h1, h2, h3 {
+  font-family: 'IBM Plex Mono', sans-serif;
+  /* letter-spacing: 2px; */
+  font-size: 14px;
+  /* line-height: 14px; */
+  text-align: justify;
+  color: #000;
+  font-weight: normal;
+  margin: 0 0 12px;
+  width: 100%;
+}
+
+.dotted-divider {
+  display: flex;
+  justify-content: space-between;
+  font-weight: lighter;
+}
