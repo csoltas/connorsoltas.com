@@ -8,17 +8,17 @@ let carouselIndices = {
 let carouselMedia = {
   carousel1: [
     {
-      src: "img/statusquo.jpg",
+      src: "../img/statusquo.jpg",
       width: 375,
       // height: auto,
     },
     {
-      src: "img/figmahexgrid.png",
+      src: "../img/figmahexgrid.png",
       width: 878,
       // height: 373,
     },
     {
-      src: "img/concept.png",
+      src: "../img/concept.png",
       width: 498,
     }
   ],
@@ -59,7 +59,7 @@ const {DeckGL, MapboxLayer, MapboxOverlay, H3HexagonLayer, PostProcessEffect} = 
 
 function loadHeader() {
   // Load the header HTML
-  fetch(`content/header-content.html`)
+  fetch(`../content/header-content.html`)
     .then(response => response.text())
     .then(html => {
       document.getElementById('header-container').innerHTML = html;
@@ -150,7 +150,7 @@ function addMap() {
   // 1. Create the mapbox map with our stylesheet
   const map = new mapboxgl.Map({
     container: document.getElementById('carto-heatmap'), // TODO: this needs be called AFTER case-study-content.html is loaded into the DOM
-    style: './style-thematic-v2.json', // replace stylesheet here
+    style: '../style-thematic-v2.json', // replace stylesheet here
     center: screenshot_params.center[0][1], // replace city coords here 
     zoom: screenshot_params.center[0][0],
     pitch: 0,
@@ -166,7 +166,7 @@ function addMap() {
     layers: [
       new H3HexagonLayer({
         id: "deckgl-hexLayer",
-        data: './10pm_pst.json', // replace hex data file here
+        data: '../10pm_pst.json', // replace hex data file here
         extruded: false,
         filled: true,
         stroked: false,
@@ -188,7 +188,7 @@ function loadPage(page) {
   loadHeader();
   updateMainContainer();
   
-  fetch(`content/case-study-4-content.html`)
+  fetch(`../content/case-study-4-content.html`)
     .then(response => response.text())
     .then(html => {
       document.getElementById('main-container').innerHTML = html;
