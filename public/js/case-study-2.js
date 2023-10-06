@@ -59,7 +59,7 @@ const {DeckGL, MapboxLayer, MapboxOverlay, H3HexagonLayer, PostProcessEffect} = 
 
 function loadHeader() {
   // Load the header HTML
-  fetch(`content/header-content.html`)
+  fetch(`../content/header-content.html`)
     .then(response => response.text())
     .then(html => {
       document.getElementById('header-container').innerHTML = html;
