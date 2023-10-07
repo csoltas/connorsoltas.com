@@ -1,22 +1,26 @@
-function updateCSS(page) {
+function updateCSSandJS(page) {
   
-  // Remove any existing page-specific stylesheet
-  const existingCSS = document.getElementById('page-specific-css');
-  if (existingCSS) {
-    existingCSS.remove();
-  }
+  // Remove any existing page-specific stylesheet or javascript
+  const existingPageSpecificCSSorJS = document.querySelectorAll('.page-specific');
+  existingPageSpecificCSSorJS.forEach((tag, index) => {
+    tag.remove();
+  });
 
   // Create a new link element for the stylesheet
   const link = document.createElement('link');
-  link.id = 'page-specific-css';
+  link.classList.add('page-specific');
   link.rel = 'stylesheet';
   link.type = 'text/css';
-
-  // Set the href attribute based on the page
   link.href =  `css/${page}.css`;
 
-  // Append the new link element to the head
+  // Create a new script element for the javascript
+  const script = document.createElement('script');
+  script.classList.add('page-specific');
+  script.src = `js/${page}.js`;
+
+  // Append the new link element to the head and the new script element to the body
   document.head.appendChild(link);
+  document.body.appendChild(script);
 }
 
 function updateHeaderContainer(page) {

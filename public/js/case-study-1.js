@@ -1,32 +1,69 @@
 // Global index to track the active carousel slides
-let carouselIndices = {
-  carousel1: 0,
-  carousel2: 0
-}; 
+// let carouselIndices = {
+//   carousel1: 0,
+//   carousel2: 0
+// }; 
 
 // Global table of carousel images
-let carouselMedia = {
-  carousel1: [
-    {
-      src: "../img/statusquo.jpg",
-      width: 375,
-      // height: auto,
-    },
-    {
-      src: "../img/figmahexgrid.png",
-      width: 878,
-      // height: 373,
-    },
-    {
-      src: "../img/concept.png",
-      width: 498,
-    }
-  ],
-  carousel2: [
-    // same structure as carousel1
-  ],
-  // add additional carousels if needed
-}
+// let carouselMedia = {
+//   carousel1: [
+//     {
+//       src: "../img/statusquo.jpg",
+//       width: 375,
+//       // height: auto,
+//     },
+//     {
+//       src: "../img/figmahexgrid.png",
+//       width: 878,
+//       // height: 373,
+//     },
+//     {
+//       src: "../img/concept.png",
+//       width: 498,
+//     }
+//   ],
+//   carousel2: [
+//     // same structure as carousel1
+//   ],
+//   // add additional carousels if needed
+// }
+
+let pageSpecificResources = [
+  {
+    id: "h3",
+    tagName: "script",
+    src: "./js/h3-js.umd.js"
+  },
+  {
+    id: "deck-gl",
+    tagName: "script",
+    src: "https://unpkg.com/deck.gl@latest/dist.min.js"
+  },
+  {
+    id: "luma-gl",
+    tagName: "script",
+    src: "https://unpkg.com/@luma.gl/shadertools@8.5.16/dist/dist.min.js"
+  },
+  {
+    id: "chroma-js",
+    tagName: "script",
+    src: "https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js",
+    integrity: "sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==",
+    crossorigin: "anonymous",
+    referrerpolicy: "no-referrer"
+  },
+  {
+    id: "mapbox-gl-js",
+    tagName: "script",
+    src: "https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js"
+  },
+  {
+    id: "mapbox-css",
+    tagName: "link",
+    href: 'https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css',
+    rel: 'stylesheet'
+  }
+];
 
 // Global variables for Mapbox map
 mapboxgl.accessToken = "pk.eyJ1IjoidWJlcmNhcnRvIiwiYSI6ImNqZG95YmM2aTByMjgycXFwbDQ1OTQ0M3oifQ.dVLqWkwIJWVRvAHvzES0Xg";
@@ -56,131 +93,131 @@ cmNYT = chroma.scale([
 ]).mode('lch')
   .domain(ephColormapDomain);
 let mapStyles = {
-  before: '../santurce.json',
-  after: '../style-thematic-v2.json'
+  before: './santurce.json',
+  after: './style-thematic-v2.json'
 };
 let ephDataSets = {
-  1: '../eph_data_1_071922/10am_pst.json',
-  2: '../eph_data_1_071922/11am_pst.json',
-  3: '../eph_data_1_071922/12pm_pst.json',
-  4: '../eph_data_1_071922/01pm_pst.json',
-  5: '../eph_data_1_071922/02pm_pst.json',
-  6: '../eph_data_1_071922/03pm_pst.json',
-  7: '../eph_data_1_071922/04pm_pst.json',
-  8: '../eph_data_1_071922/05pm_pst.json',
-  9: '../eph_data_1_071922/06pm_pst.json',
-  10: '../eph_data_1_071922/07pm_pst.json',
-  11: '../eph_data_1_071922/08pm_pst.json',
-  12: '../eph_data_1_071922/09pm_pst.json',
-  13: '../eph_data_1_071922/10pm_pst.json',
-  14: '../eph_data_1_071922/11pm_pst.json',
-  15: '../eph_data_1_071922/12am+1_pst.json',
-  16: '../eph_data_1_071922/01am+1_pst.json',
-  17: '../eph_data_1_071922/02am+1_pst.json',
-  18: '../eph_data_1_071922/03am+1_pst.json',
-  19: '../eph_data_1_071922/04am+1_pst.json',
-  20: '../eph_data_1_071922/05am+1_pst.json',
-  21: '../eph_data_1_071922/06am+1_pst.json',
-  22: '../eph_data_1_071922/07am+1_pst.json',
-  23: '../eph_data_1_071922/08am+1_pst.json',
-  24: '../eph_data_1_071922/09am+1_pst.json',
+  1: './eph_data_1_071922/10am_pst.json',
+  2: './eph_data_1_071922/11am_pst.json',
+  3: './eph_data_1_071922/12pm_pst.json',
+  4: './eph_data_1_071922/01pm_pst.json',
+  5: './eph_data_1_071922/02pm_pst.json',
+  6: './eph_data_1_071922/03pm_pst.json',
+  7: './eph_data_1_071922/04pm_pst.json',
+  8: './eph_data_1_071922/05pm_pst.json',
+  9: './eph_data_1_071922/06pm_pst.json',
+  10: './eph_data_1_071922/07pm_pst.json',
+  11: './eph_data_1_071922/08pm_pst.json',
+  12: './eph_data_1_071922/09pm_pst.json',
+  13: './eph_data_1_071922/10pm_pst.json',
+  14: './eph_data_1_071922/11pm_pst.json',
+  15: './eph_data_1_071922/12am+1_pst.json',
+  16: './eph_data_1_071922/01am+1_pst.json',
+  17: './eph_data_1_071922/02am+1_pst.json',
+  18: './eph_data_1_071922/03am+1_pst.json',
+  19: './eph_data_1_071922/04am+1_pst.json',
+  20: './eph_data_1_071922/05am+1_pst.json',
+  21: './eph_data_1_071922/06am+1_pst.json',
+  22: './eph_data_1_071922/07am+1_pst.json',
+  23: './eph_data_1_071922/08am+1_pst.json',
+  24: './eph_data_1_071922/09am+1_pst.json',
 }
 const {DeckGL, MapboxLayer, MapboxOverlay, H3HexagonLayer, PostProcessEffect} = deck; // Create aliases for the needed deck classes
 
-function loadHeader() {
-  // Load the header HTML
-  fetch(`../content/header-content.html`)
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('header-container').innerHTML = html;
-    });
-}
+// function loadHeader() {
+//   // Load the header HTML
+//   fetch(`../content/header-content.html`)
+//     .then(response => response.text())
+//     .then(html => {
+//       document.getElementById('header-container').innerHTML = html;
+//     });
+// }
 
-function updateMainContainer() {
-  const header = document.querySelector("header");
-  const mainContainer = document.querySelector("main");
-  mainContainer.style.minHeight = `calc(100vh - ${header.offsetHeight}px)`;
-}
+// function updateMainContainer() {
+//   const header = document.querySelector("header");
+//   const mainContainer = document.querySelector("main");
+//   mainContainer.style.minHeight = `calc(100vh - ${header.offsetHeight}px)`;
+// }
 
-function updateCarousel(carouselId, index) {
-  const slidesContainer = document.querySelector(`#${carouselId} .slides-container`);
-  const slideHeaders = document.querySelectorAll(`#${carouselId} .carousel-slide > h3 > a`);
-  const slideParagraphs = document.querySelectorAll(`#${carouselId} .carousel-slide > p`);
-  const translateXDistance = document.querySelector('main').offsetWidth + 160;
+// function updateCarousel(carouselId, index) {
+//   const slidesContainer = document.querySelector(`#${carouselId} .slides-container`);
+//   const slideHeaders = document.querySelectorAll(`#${carouselId} .carousel-slide > h3 > a`);
+//   const slideParagraphs = document.querySelectorAll(`#${carouselId} .carousel-slide > p`);
+//   const translateXDistance = document.querySelector('main').offsetWidth + 160;
 
-  // Update carousel position
-  slidesContainer.style.transform = `translateX(-${index * translateXDistance}px)`;
+//   // Update carousel position
+//   slidesContainer.style.transform = `translateX(-${index * translateXDistance}px)`;
 
-  // Remove active styling from all slide headers and paragraphs
-  slideHeaders.forEach((h) => h.classList.remove('active'));
-  slideParagraphs.forEach((p) => p.classList.remove('active'));
+//   // Remove active styling from all slide headers and paragraphs
+//   slideHeaders.forEach((h) => h.classList.remove('active'));
+//   slideParagraphs.forEach((p) => p.classList.remove('active'));
 
-  // Add active styling to the clicked header and its corresponding paragraph
-  slideHeaders[index].classList.add('active');
-  slideParagraphs[index].classList.add('active');
+//   // Add active styling to the clicked header and its corresponding paragraph
+//   slideHeaders[index].classList.add('active');
+//   slideParagraphs[index].classList.add('active');
 
-  // Update the carousel controller text
-  const prevLink = document.querySelector(`#${carouselId} .prev-slide`);
-  const nextLink = document.querySelector(`#${carouselId} .next-slide`);
-  const currentSlideSpan = document.querySelector(`#${carouselId} .current-slide`);
-  currentSlideSpan.textContent = index + 1;
+//   // Update the carousel controller text
+//   const prevLink = document.querySelector(`#${carouselId} .prev-slide`);
+//   const nextLink = document.querySelector(`#${carouselId} .next-slide`);
+//   const currentSlideSpan = document.querySelector(`#${carouselId} .current-slide`);
+//   currentSlideSpan.textContent = index + 1;
 
-  // Determine which arrow links should be active
-  prevLink.classList.toggle('enabled', index > 0);
-  nextLink.classList.toggle('enabled', index < slideHeaders.length - 1);
+//   // Determine which arrow links should be active
+//   prevLink.classList.toggle('enabled', index > 0);
+//   nextLink.classList.toggle('enabled', index < slideHeaders.length - 1);
 
-  carouselIndices[carouselId] = index; // Update the global index
-}
+//   carouselIndices[carouselId] = index; // Update the global index
+// }
 
-function updateCarouselMediaSlide(carouselId) {
-  const carouselMediaSlide = document.querySelector(`#${carouselId}-media > img`);
-  const carouselMediaAsset = carouselMedia[carouselId][carouselIndices[carouselId]];
+// function updateCarouselMediaSlide(carouselId) {
+//   const carouselMediaSlide = document.querySelector(`#${carouselId}-media > img`);
+//   const carouselMediaAsset = carouselMedia[carouselId][carouselIndices[carouselId]];
 
-  console.log(carouselMediaAsset.width);
+//   console.log(carouselMediaAsset.width);
 
-  carouselMediaSlide.src = carouselMediaAsset.src;
-  carouselMediaSlide.width = carouselMediaAsset.width;
-}
+//   carouselMediaSlide.src = carouselMediaAsset.src;
+//   carouselMediaSlide.width = carouselMediaAsset.width;
+// }
 
-function addCarouselListeners(carouselId) {  
-  const slideHeaders = document.querySelectorAll(`#${carouselId} .carousel-slide > h3 > a`);
-  const prevLink = document.querySelector(`#${carouselId} .prev-slide`);
-  const nextLink = document.querySelector(`#${carouselId} .next-slide`);
-  // updateCarouselMediaSlide(carouselId); // initialize the carousel media
+// function addCarouselListeners(carouselId) {  
+//   const slideHeaders = document.querySelectorAll(`#${carouselId} .carousel-slide > h3 > a`);
+//   const prevLink = document.querySelector(`#${carouselId} .prev-slide`);
+//   const nextLink = document.querySelector(`#${carouselId} .next-slide`);
+//   // updateCarouselMediaSlide(carouselId); // initialize the carousel media
 
-  slideHeaders.forEach((header, index) => {
-    header.addEventListener('click', (e) => {
-      e.preventDefault();
-      updateCarousel(carouselId, index);
-      updateCarouselMediaSlide(carouselId);
-    })
-  });
+//   slideHeaders.forEach((header, index) => {
+//     header.addEventListener('click', (e) => {
+//       e.preventDefault();
+//       updateCarousel(carouselId, index);
+//       updateCarouselMediaSlide(carouselId);
+//     })
+//   });
 
-  prevLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    const currentCarouselIndex = carouselIndices[carouselId];
-    if (currentCarouselIndex > 0) {
-        updateCarousel(carouselId, currentCarouselIndex - 1);
-        updateCarouselMediaSlide(carouselId);
-    }
-  });
+//   prevLink.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     const currentCarouselIndex = carouselIndices[carouselId];
+//     if (currentCarouselIndex > 0) {
+//         updateCarousel(carouselId, currentCarouselIndex - 1);
+//         updateCarouselMediaSlide(carouselId);
+//     }
+//   });
 
-  nextLink.addEventListener('click', (e) => {
-    e.preventDefault();
-    const currentCarouselIndex = carouselIndices[carouselId];
-    if (currentCarouselIndex < slideHeaders.length - 1) {
-        updateCarousel(carouselId, currentCarouselIndex + 1);
-        updateCarouselMediaSlide(carouselId);
-    }
-  });
-}
+//   nextLink.addEventListener('click', (e) => {
+//     e.preventDefault();
+//     const currentCarouselIndex = carouselIndices[carouselId];
+//     if (currentCarouselIndex < slideHeaders.length - 1) {
+//         updateCarousel(carouselId, currentCarouselIndex + 1);
+//         updateCarouselMediaSlide(carouselId);
+//     }
+//   });
+// }
 
 function addMap() {
   
   // 1. Create the mapbox map with our stylesheet
   const map = new mapboxgl.Map({
     container: document.getElementById('carto-heatmap'), // TODO: this needs be called AFTER case-study-content.html is loaded into the DOM
-    style: '../style-thematic-v2.json', // replace stylesheet here
+    style: './style-thematic-v2.json', // replace stylesheet here
     center: screenshot_params.center[0][1], // replace city coords here 
     zoom: screenshot_params.center[0][0],
     pitch: 0,
@@ -230,7 +267,7 @@ function addMap() {
           new H3HexagonLayer({
             visible: this.value == 'after' ? true : false,
             id: "deckgl-hexLayer",
-            data: '../10pm_pst.json', // replace hex data file here
+            data: './10pm_pst.json', // replace hex data file here
             extruded: false,
             filled: true,
             stroked: false,
@@ -281,20 +318,37 @@ function addMap() {
   });
 }
 
-function loadPage(page) {
-  loadHeader();
-  updateMainContainer();
+// function loadPage(page) {
+//   loadHeader();
+//   updateMainContainer();
   
-  fetch(`../content/case-study-1-content.html`)
-    .then(response => response.text())
-    .then(html => {
-      document.getElementById('main-container').innerHTML = html;
-      // addCarouselListeners('carousel1');
-      // addCarouselListeners('carousel2');
-      addMap();
+//   fetch(`../content/case-study-1-content.html`)
+//     .then(response => response.text())
+//     .then(html => {
+//       document.getElementById('main-container').innerHTML = html;
+//       // addCarouselListeners('carousel1');
+//       // addCarouselListeners('carousel2');
+//       addMap();
 
-    });
-}
+//     });
+// }
 
 // Load the case study content
-loadPage('case-study-1');
+// loadPage('case-study-1');
+
+// Create new tags for all page-specific resources
+pageSpecificResources.forEach((resource, index) => {
+  
+  // Create a tag with the class "page-specific"
+  const newTag = document.createElement(resource.tagName);
+  newTag.classList.add("page-specific");
+  
+  // Set attributes on the new tag
+  Object.entries(resource).forEach(([key, value]) => {
+    if (resource.hasOwnProperty(key)) { // Check if the current property belongs to the current resource or to its prototype
+     newTag.setAttribute(key, value);
+    }
+  });
+});
+
+addMap();
