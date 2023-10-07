@@ -65,16 +65,13 @@ function loadPage(page) {
 }
 
 function handleNavClick(event) {
-  // Prevent the default link behavior
   event.preventDefault(); 
   const page = event.target.getAttribute('href');
   loadPage(page);
 }
 
+// Add listener to handle navigation
 document.body.addEventListener('click', function (event) {
-  // Check if the clicked element has the 'nav-link' or 'name-link class
-  console.log(event.target.id);
-
   if (event.target.id != 'contact' 
     && (event.target.classList.contains('nav-link') || event.target.classList.contains('name-link'))) {
     handleNavClick(event);
