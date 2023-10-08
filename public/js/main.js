@@ -228,27 +228,24 @@ function loadPage(page) {
   fetch(`content/${page}-content.html`)
     .then(response => response.text())
     .then(html => {
+
+      // Add the HTML to the page
       document.getElementById('main-container').innerHTML = html; 
       
-      if (page == "case-study-1") {
-        addMap();
-      }
+      // Add the map if we're on case-study-1
+      if (page == "case-study-1") { addMap(); }
+
+      // Add listeners to handle navigation
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+          e.preventDefault();
+          loadPage(this.getAttribute('href'));
+        });
+      }); 
+
+      // history.pushState({pageURL: url}, null, url);
     });
 }
-
-function handleNavClick(event) {
-  event.preventDefault(); 
-  const page = event.target.getAttribute('href');
-  loadPage(page);
-}
-
-// Add listener to handle navigation
-document.body.addEventListener('click', function (event) {
-  if (event.target.id != 'contact' 
-    && (event.target.classList.contains('nav-link') || event.target.classList.contains('name-link'))) {
-      handleNavClick(event);
-  }
-});
 
 // Load the home page content by default
 loadPage('home');
