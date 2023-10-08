@@ -9,9 +9,10 @@
 }
 
 .case-studies li {
+  font-family: 'IBM Plex Mono';
+  color: #0000ff;
   counter-increment: list-counter; /* Increments the counter */
   position: relative;
-  /* line-height: 14px; */
 }
 
 .case-studies li:before {

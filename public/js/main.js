@@ -1,3 +1,61 @@
+// Mapbox access token
+mapboxgl.accessToken = "pk.eyJ1IjoidWJlcmNhcnRvIiwiYSI6ImNqZG95YmM2aTByMjgycXFwbDQ1OTQ0M3oifQ.dVLqWkwIJWVRvAHvzES0Xg";
+
+// Colormap domain and color scale
+ephColormapDomain = [12.87,31.99];
+cmNYT = chroma.scale([
+  '#F2DF91',
+  '#F9C467',
+  '#FFA83E',
+  '#FF8B24',
+  '#FD6A0B',
+  '#F04F09',
+  '#D8382E',
+  '#C62833',
+  '#AF1C43',
+  '#8A1739',
+  '#701547',
+  '#4C0D3E'
+]).mode('lch')
+  .domain(ephColormapDomain);
+
+// Map styles for toggle
+let mapStyles = {
+  before: './santurce.json',
+  after: './style-thematic-v2.json'
+};
+
+// Map EPH datasets for slider
+let ephDataSets = {
+  1: './eph_data_1_071922/10am_pst.json',
+  2: './eph_data_1_071922/11am_pst.json',
+  3: './eph_data_1_071922/12pm_pst.json',
+  4: './eph_data_1_071922/01pm_pst.json',
+  5: './eph_data_1_071922/02pm_pst.json',
+  6: './eph_data_1_071922/03pm_pst.json',
+  7: './eph_data_1_071922/04pm_pst.json',
+  8: './eph_data_1_071922/05pm_pst.json',
+  9: './eph_data_1_071922/06pm_pst.json',
+  10: './eph_data_1_071922/07pm_pst.json',
+  11: './eph_data_1_071922/08pm_pst.json',
+  12: './eph_data_1_071922/09pm_pst.json',
+  13: './eph_data_1_071922/10pm_pst.json',
+  14: './eph_data_1_071922/11pm_pst.json',
+  15: './eph_data_1_071922/12am+1_pst.json',
+  16: './eph_data_1_071922/01am+1_pst.json',
+  17: './eph_data_1_071922/02am+1_pst.json',
+  18: './eph_data_1_071922/03am+1_pst.json',
+  19: './eph_data_1_071922/04am+1_pst.json',
+  20: './eph_data_1_071922/05am+1_pst.json',
+  21: './eph_data_1_071922/06am+1_pst.json',
+  22: './eph_data_1_071922/07am+1_pst.json',
+  23: './eph_data_1_071922/08am+1_pst.json',
+  24: './eph_data_1_071922/09am+1_pst.json',
+}
+
+// Create aliases for the needed deck classes
+const {DeckGL, MapboxLayer, MapboxOverlay, H3HexagonLayer, PostProcessEffect} = deck;
+
 function updateCSSandJS(page) {
   
   // Remove any existing page-specific stylesheet or javascript
@@ -56,8 +114,114 @@ function updateMainContainer() {
   mainContainer.style.minHeight = `calc(100vh - ${header.offsetHeight}px)`;
 }
 
+function addMap() {
+  
+  // 1. Create the mapbox map with our stylesheet
+  const map = new mapboxgl.Map({
+    container: document.getElementById('carto-heatmap'), // NOTE: this needs be called AFTER case-study-content.html is loaded into the DOM
+    style: './style-thematic-v2.json', // replace stylesheet here
+    center: [-122.2, 37.7],
+    zoom: 9,
+    pitch: 0,
+    maxZoom: 13,
+    minZoom: 8.5,
+    maxBounds: [[-124.0237, 36.2207], [-120.7423, 38.9021]],
+    preserveDrawingBuffer: true // needs to be true to allow PNG capture (see Mapbox GL JS docs)
+  });
+
+  // 2. Create and style H3HexagonLayer from hex data provided
+  const hexLayer = new MapboxOverlay({
+    interleaved: true,
+    layers: [
+      new H3HexagonLayer({
+        id: "deckgl-hexLayer",
+        data: './10pm_pst.json', // replace hex data file here
+        extruded: false,
+        filled: true,
+        stroked: false,
+        getFillColor: d => cmNYT(d.eph_predict).rgb(), // use for EPH data
+        getHexagon: d => d.hex_id,
+        opacity: 0.2,
+        beforeId: "building-shadow"  // the layer after the highest road layer
+      })
+    ]   
+  });
+
+  // 3. Add H3HexagonLayer to the mapbox map when the map loads
+  map.on('load', () => {
+    map.addControl(hexLayer);
+    map.addControl(new mapboxgl.FullscreenControl());
+    map.addControl(new mapboxgl.NavigationControl({ showCompass: false }), 'bottom-right');
+  });
+
+  // 4. Add listeners for controls
+  const styleToggles = document.querySelectorAll('#map-style-toggles > input');
+  const timeSlider = document.getElementById('map-data-slider-time');
+  const colorSlider = document.getElementById('map-data-slider-color');
+
+  styleToggles.forEach((toggle, index) => {
+    toggle.addEventListener('change', function () {
+      map.setStyle(mapStyles[this.value]);
+      timeSlider.toggleAttribute("disabled");
+      colorSlider.toggleAttribute("disabled");
+      hexLayer.setProps({
+        layers: [
+          new H3HexagonLayer({
+            visible: this.value == 'after' ? true : false,
+            id: "deckgl-hexLayer",
+            data: './10pm_pst.json', // replace hex data file here
+            extruded: false,
+            filled: true,
+            stroked: false,
+            getFillColor: d => cmNYT(d.eph_predict).rgb(), // use for EPH data
+            getHexagon: d => d.hex_id,
+            opacity: 0.2,
+            beforeId: "building-shadow"  // the layer after the highest road layer
+          })
+        ]
+      })
+    })
+  });
+
+  timeSlider.addEventListener('input', function() {
+    hexLayer.setProps({
+      layers: [
+        new H3HexagonLayer({
+          id: "deckgl-hexLayer",
+          data: ephDataSets[this.value],
+          extruded: false,
+          filled: true,
+          stroked: false,
+          getFillColor: d => cmNYT(d.eph_predict).rgb(),
+          getHexagon: d => d.hex_id,
+          opacity: 0.2,
+          beforeId: "building-shadow"
+        })
+      ]
+    })
+  });
+
+  colorSlider.addEventListener('input', function() {
+    hexLayer.setProps({
+      layers: [
+        new H3HexagonLayer({
+          id: "deckgl-hexLayer",
+          data: ephDataSets[timeSlider.value],
+          extruded: false,
+          filled: true,
+          stroked: false,
+          getFillColor: d => cmNYT.classes(Number(this.value))(d.eph_predict).rgb(), // todo: figure out classing or gamma correction
+          getHexagon: d => d.hex_id,
+          opacity: 0.1,
+          beforeId: "building-shadow"
+        })
+      ]
+    })
+  });
+}
+
 function loadPage(page) {
-  updateCSS(page);
+  updateCSSandJS(page);
   updateHeaderContainer(page);
   updateMainContainer();
   
@@ -65,6 +229,10 @@ function loadPage(page) {
     .then(response => response.text())
     .then(html => {
       document.getElementById('main-container').innerHTML = html; 
+      
+      if (page == "case-study-1") {
+        addMap();
+      }
     });
 }
 
@@ -78,7 +246,7 @@ function handleNavClick(event) {
 document.body.addEventListener('click', function (event) {
   if (event.target.id != 'contact' 
     && (event.target.classList.contains('nav-link') || event.target.classList.contains('name-link'))) {
-    handleNavClick(event);
+      handleNavClick(event);
   }
 });
 
