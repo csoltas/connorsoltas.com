@@ -243,9 +243,36 @@ function loadPage(page) {
         });
       }); 
 
-      // history.pushState({pageURL: url}, null, url);
+      // Add new entry to history
+      history.pushState({pageURL: page}, null, page);
     });
 }
 
 // Load the home page content by default
-loadPage('home');
+// loadPage('home');
+
+let path = window.location.pathname;
+
+let routes = {
+  "/": "home",
+  "/about": "about",
+  "/work": "work",
+  "/work/case-study-1": "case-study-1",
+  "/work/case-study-2": "case-study-2",
+  "/work/case-study-3": "case-study-3",
+  "/work/case-study-4": "case-study-4" 
+};
+
+if (routes[path]) {
+  loadPage(routes[path]);
+} else {
+  loadPage("error");
+}
+
+// When back or forward button is clicked
+window.addEventListener('popstate', function(event) {
+  if(event.state) {
+      // Load and display the content associated with the state
+      loadPage(event.state.pageURL);
+  }
+});
