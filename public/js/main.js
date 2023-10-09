@@ -56,7 +56,7 @@ let ephDataSets = {
 // Create aliases for the needed deck classes
 const {DeckGL, MapboxLayer, MapboxOverlay, H3HexagonLayer, PostProcessEffect} = deck;
 
-function updateCSSandJS(page) {
+function updateCSS(page) {
   
   // Remove any existing page-specific stylesheet or javascript
   const existingPageSpecificCSS = document.querySelectorAll('.page-specific');
@@ -215,7 +215,7 @@ function addMap() {
 }
 
 function loadPage(page) {  
-  updateCSSandJS(page);
+  // updateCSSandJS(page);
   updateHeaderContainer(page);
   updateMainContainer();
   
