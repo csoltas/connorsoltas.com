@@ -59,8 +59,8 @@ const {DeckGL, MapboxLayer, MapboxOverlay, H3HexagonLayer, PostProcessEffect} = 
 function updateCSSandJS(page) {
   
   // Remove any existing page-specific stylesheet or javascript
-  const existingPageSpecificCSSorJS = document.querySelectorAll('.page-specific');
-  existingPageSpecificCSSorJS.forEach((tag, index) => {
+  const existingPageSpecificCSS = document.querySelectorAll('.page-specific');
+  existingPageSpecificCSS.forEach((tag, index) => {
     tag.remove();
   });
 
@@ -71,14 +71,8 @@ function updateCSSandJS(page) {
   link.type = 'text/css';
   link.href =  `/css/${page}.css`;
 
-  // Create a new script element for the javascript
-  const script = document.createElement('script');
-  script.classList.add('page-specific');
-  script.src = `/js/${page}.js`;
-
   // Append the new link element to the head and the new script element to the body
   document.head.appendChild(link);
-  document.body.appendChild(script);
 }
 
 function updateHeaderContainer(page) {
