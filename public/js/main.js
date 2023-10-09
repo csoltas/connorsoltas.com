@@ -246,9 +246,7 @@ function loadPage(page) {
       }); 
 
       // Add new entry to history
-      const url = window.location.pathname;
-      console.log(url);
-      history.pushState({pageURL: url}, "", url);
+      history.pushState({pageURL: page}, "", page);
     });
 }
 
