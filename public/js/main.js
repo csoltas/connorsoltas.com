@@ -230,24 +230,12 @@ function loadPage(page) {
       if (page == "work/case-study-1") { addMap(); }
 
       // Add listeners to handle navigation
-      // NOTE: we are not reloading index.html with a different path requested in the URL;
-      //       we are dynamically fetching/replacing html content with ajax navigation.
       document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
-
-          // Add new entry to history
-          const destinationPage = this.getAttribute('href');
-          console.log("Before new state is pushed:", history.length, history.state);
-          if (page == "home") {
-            history.pushState({pageName: destinationPage}, "", "/");
-          } else {
-            history.pushState({pageName: destinationPage}, "", `/${destinationPage}`);
-          }
-          console.log("After new state is pushed:", history.length, history.state);
-
-          // Load the new page
-          loadPage(destinationPage);
+          const dest = this.getAttribute('href');
+          history.pushState({pageName: dest}, "", `/${dest}`);
+          loadPage(dest);
         });
       }); 
     });
@@ -273,9 +261,6 @@ if (routes[path]) {
 
 // When back or forward button is clicked
 window.addEventListener('popstate', function(event) {
-  console.log("Popstate triggered");
-  console.log("Current state:", history.state);
-  console.log("Current pathname:", window.location.pathname);
   if(event.state) {
     loadPage(event.state.pageName);
   }
