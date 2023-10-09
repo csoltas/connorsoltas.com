@@ -56,11 +56,11 @@ let ephDataSets = {
 // Create aliases for the needed deck classes
 const {DeckGL, MapboxLayer, MapboxOverlay, H3HexagonLayer, PostProcessEffect} = deck;
 
-function updateHeaderContainer(page) {
+function updateHeaderContainer(url) {
   const headerContainer = document.getElementById('header-container');
   const mainContainer = document.querySelector("main");
   
-  if (page === 'home') {
+  if (url === '/home') {
     headerContainer.style.display = 'none'; // Hide the header on the home page
   } else {
     headerContainer.style.display = 'block'; // Show the header on other pages
@@ -74,7 +74,7 @@ function updateHeaderContainer(page) {
         // De-emphasize the current nav link
         const navLinks = document.querySelectorAll('.nav-link');
         navLinks.forEach(link => {
-            if (link.getAttribute('href') === page) {
+            if (link.getAttribute('href') === url) {
                 link.classList.add('active');
             } else {
                 link.classList.remove('active');
@@ -82,13 +82,6 @@ function updateHeaderContainer(page) {
         });
       });
   }
-}
-
-function updateMainContainer() {
-  const header = document.querySelector("header");
-  const mainContainer = document.querySelector("main");
-  // mainContainer.style.minHeight = `calc(100vh - ${header.offsetHeight}px)`;
-  // header.style.marginBottom = `calc(100vh - ${header.offsetHeight} - ${mainContainer.offsetHeight}) / 2`;
 }
 
 function addMap() {
@@ -197,11 +190,10 @@ function addMap() {
   });
 }
 
-function loadPage(page) {  
-  updateHeaderContainer(page);
-  // updateMainContainer();
+function loadPage(url) {  
+  updateHeaderContainer(url);
   
-  fetch(`/content/${page}-content.html`)
+  fetch(`/content${url}-content.html`)
     .then(response => response.text())
     .then(html => {
 
@@ -209,14 +201,14 @@ function loadPage(page) {
       document.getElementById('main-container').innerHTML = html; 
       
       // Add the map if we're on case-study-1
-      if (page == "work/case-study-1") { addMap(); }
+      if (url == "/work/case-study-1") { addMap(); }
 
       // Add listeners to handle navigation
       document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
           const dest = this.getAttribute('href');
-          history.pushState({pageName: dest}, "", `/${dest}`);
+          history.pushState({pageURL: dest}, "", dest);
           loadPage(dest);
         });
       }); 
@@ -229,31 +221,31 @@ function loadPage(page) {
 let path = window.location.pathname;
 
 let routes = {
-  "/": "home",
-  "/about": "about",
-  "/work": "work",
-  "/work/case-study-1": "work/case-study-1",
-  "/work/case-study-2": "work/case-study-2",
-  "/work/case-study-3": "work/case-study-3",
-  "/work/case-study-4": "work/case-study-4" 
+  "/": "/home",
+  "/about": "/about",
+  "/work": "/work",
+  "/work/case-study-1": "/work/case-study-1",
+  "/work/case-study-2": "/work/case-study-2",
+  "/work/case-study-3": "/work/case-study-3",
+  "/work/case-study-4": "/work/case-study-4" 
 };
 
 // Ensure the initial load is properly represented in browser history
 if (!history.state) {
-  const initialPageName = routes[path];
-  history.replaceState({ pageName: initialPageName }, '', `/${initialPageName}`);
+  const initialPageURL = routes[path];
+  history.replaceState({ pageURL: initialPageURL }, '', initialPageURL);
 }
 
 if (routes[path]) {
   loadPage(routes[path]);
 } else {
-  history.pushState({ pageName: "error" }, "", "/error");
+  history.pushState({ pageURL: "/error" }, "", "/error");
   loadPage("error");
 }
 
 // When back or forward button is clicked
 window.addEventListener('popstate', function(event) {
   if(event.state) {
-    loadPage(event.state.pageName);
+    loadPage(event.state.pageURL);
   }
 });
