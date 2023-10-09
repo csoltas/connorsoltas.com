@@ -56,20 +56,19 @@ let ephDataSets = {
 // Create aliases for the needed deck classes
 const {DeckGL, MapboxLayer, MapboxOverlay, H3HexagonLayer, PostProcessEffect} = deck;
 
-function updateHeaderContainer(url) {
-  const headerContainer = document.getElementById('header-container');
-  const mainContainer = document.querySelector("main");
+function updateHeader(url) {
+  const header = document.getElementById('header-container');
   
   if (url === '/home') {
-    headerContainer.style.display = 'none'; // Hide the header on the home page
+    header.style.display = 'none'; // Hide the header on the home page
   } else {
-    headerContainer.style.display = 'block'; // Show the header on other pages
+    header.style.display = 'block'; // Show the header on other pages
 
     // Load the header HTML
     fetch(`/content/header-content.html`)
       .then(response => response.text())
       .then(html => {
-        document.getElementById('header-container').innerHTML = html;
+        header.innerHTML = html;
 
         // De-emphasize the current nav link
         const navLinks = document.querySelectorAll('.nav-link');
@@ -81,7 +80,7 @@ function updateHeaderContainer(url) {
             }
         });
       });
-  }
+    }
 }
 
 function addMap() {
@@ -186,7 +185,7 @@ function addMap() {
           stroked: false,
           getFillColor: d => cmNYT.classes(Number(this.value))(d.eph_predict).rgb(), // todo: figure out classing or gamma correction
           getHexagon: d => d.hex_id,
-          opacity: 0.1,
+          opacity: 0.2,
           beforeId: "building-shadow"
         })
       ]
@@ -195,7 +194,7 @@ function addMap() {
 }
 
 function loadPage(url) {  
-  updateHeaderContainer(url);
+  updateHeader(url);
   
   fetch(`/content${url}-content.html`)
     .then(response => response.text())
@@ -245,7 +244,7 @@ if (routes[path]) {
   loadPage(routes[path]);
 } else {
   history.pushState({ pageURL: "/error" }, "", "/error");
-  loadPage("error");
+  loadPage("/error");
 }
 
 // When back or forward button is clicked
