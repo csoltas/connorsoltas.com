@@ -233,7 +233,7 @@ function loadPage(page) {
       document.getElementById('main-container').innerHTML = html; 
       
       // Add the map if we're on case-study-1
-      if (page == "case-study-1") { addMap(); }
+      if (page == "work/case-study-1") { addMap(); }
 
       // Add listeners to handle navigation
       // NOTE: we are not reloading index.html with a different path requested in the URL;
@@ -259,10 +259,10 @@ let routes = {
   "/": "home",
   "/about": "about",
   "/work": "work",
-  "/work/case-study-1": "case-study-1",
-  "/work/case-study-2": "case-study-2",
-  "/work/case-study-3": "case-study-3",
-  "/work/case-study-4": "case-study-4" 
+  "/work/case-study-1": "work/case-study-1",
+  "/work/case-study-2": "work/case-study-2",
+  "/work/case-study-3": "work/case-study-3",
+  "/work/case-study-4": "work/case-study-4" 
 };
 
 if (routes[path]) {
