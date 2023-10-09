@@ -11,7 +11,7 @@ body {
 header {
   position: fixed;
   top: 0;
-  width: calc(100vh - 48px);
+  width: calc(100vw - 48px);
   /* margin-bottom: 48px; */
   z-index: 1000;
   background-color: #fff;
