@@ -39,7 +39,7 @@ hr.sm {
 }
 
 .iphone-frame-straight {
-  background-image: url('../img/iphone-frame.png');
+  background-image: url('/img/iphone-frame.png');
   padding: 20px 22px;
   height: 812px;
   width: 375px;
@@ -48,8 +48,8 @@ hr.sm {
 }
 
 .masked-iphone-straight {
-  mask-image: url('../img/iphone-frame-mask.svg');
-  -webkit-mask-image: url('../img/iphone-frame-mask.svg');
+  mask-image: url('/img/iphone-frame-mask.svg');
+  -webkit-mask-image: url('/img/iphone-frame-mask.svg');
 }
 
 .media-overlapping {
