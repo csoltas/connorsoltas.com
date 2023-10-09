@@ -215,6 +215,15 @@ function addMap() {
 }
 
 function loadPage(page) {
+  // Add new entry to history
+  console.log("Before new state is pushed:", history.length, history.state);
+  if (page == "home") {
+    history.pushState({pageName: page}, "", "/");
+  } else {
+    history.pushState({pageName: page}, "", `/${page}`);
+  }
+  console.log("After new state is pushed:", history.length, history.state);
+  
   updateCSSandJS(page);
   updateHeaderContainer(page);
   updateMainContainer();
@@ -238,15 +247,6 @@ function loadPage(page) {
           loadPage(this.getAttribute('href'));
         });
       }); 
-
-      // Add new entry to history
-      console.log("Before new state is pushed:", history.length, history.state);
-      if (page == "home") {
-        history.pushState({pageName: page}, "", "/");
-      } else {
-        history.pushState({pageName: page}, "", `/${page}`);
-      }
-      console.log("After new state is pushed:", history.length, history.state);
     });
 }
 
