@@ -270,7 +270,10 @@ if (routes[path]) {
 
 // When back or forward button is clicked
 window.addEventListener('popstate', function(event) {
+  console.log("Popstate triggered");
+  console.log("Current state:", history.state);
+  console.log("Current pathname:", window.location.pathname);
   if(event.state) {
-      loadPage(event.state.pageName);
+    loadPage(event.state.pageName);
   }
 });
