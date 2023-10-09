@@ -9,9 +9,10 @@ body {
 }
 
 header {
-  position: sticky;
+  position: fixed;
   top: 0;
-  margin-bottom: 48px;
+  width: calc(100vh - 48px);
+  /* margin-bottom: 48px; */
   z-index: 1000;
   background-color: #fff;
   padding: 24px;
@@ -68,9 +69,8 @@ a.active {
 }
 
 main {
-  position: absolute;
-  min-height: 100vh;
   width: 240px;
+  min-height: 100vh;
   margin: 0 auto;
   display: flex;
   flex-direction: column;

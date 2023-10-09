@@ -64,7 +64,6 @@ function updateHeaderContainer(page) {
     headerContainer.style.display = 'none'; // Hide the header on the home page
   } else {
     headerContainer.style.display = 'block'; // Show the header on other pages
-    mainContainer.style.paddingTop = '115px';
 
     // Load the header HTML
     fetch(`/content/header-content.html`)
@@ -88,7 +87,8 @@ function updateHeaderContainer(page) {
 function updateMainContainer() {
   const header = document.querySelector("header");
   const mainContainer = document.querySelector("main");
-  mainContainer.style.minHeight = `calc(100vh - ${header.offsetHeight}px)`;
+  // mainContainer.style.minHeight = `calc(100vh - ${header.offsetHeight}px)`;
+  // header.style.marginBottom = `calc(100vh - ${header.offsetHeight} - ${mainContainer.offsetHeight}) / 2`;
 }
 
 function addMap() {
