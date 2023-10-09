@@ -222,6 +222,7 @@ let path = window.location.pathname;
 
 let routes = {
   "/": "/home",
+  "/home": "/home",
   "/about": "/about",
   "/work": "/work",
   "/work/case-study-1": "/work/case-study-1",
