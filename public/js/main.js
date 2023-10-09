@@ -246,12 +246,13 @@ function loadPage(page) {
       }); 
 
       // Add new entry to history
-      history.pushState({pageURL: page}, "", page);
+      if (page == "home") {
+        history.pushState({pageName: "/"}, "", "/");
+      } else {
+        history.pushState({pageName: page}, "", `/${page}`);
+      }
     });
 }
-
-// Load the home page content by default
-// loadPage('home');
 
 let path = window.location.pathname;
 
@@ -269,13 +270,11 @@ if (routes[path]) {
   loadPage(routes[path]);
 } else {
   loadPage("error");
-  // TODO: change URL to display name of an error page
 }
 
 // When back or forward button is clicked
-// window.addEventListener('popstate', function(event) {
-//   if(event.state) {
-//       // Load and display the content associated with the state
-//       loadPage(event.state.pageURL);
-//   }
-// });
+window.addEventListener('popstate', function(event) {
+  if(event.state) {
+      loadPage(event.state.pageName);
+  }
+});
