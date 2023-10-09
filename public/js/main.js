@@ -129,11 +129,12 @@ function addMap() {
   const timeSlider = document.getElementById('map-data-slider-time');
   const colorSlider = document.getElementById('map-data-slider-color');
   const sliderLabels = document.querySelectorAll('.slider-label');
+  const toggleLabels = document.querySelectorAll('#map-style-toggles > label');
 
   styleToggles.forEach((toggle, index) => {
     toggle.addEventListener('change', function () {
       map.setStyle(mapStyles[this.value]);
-      styleToggles.forEach(label => { label.classList.toggle('enabled'); });
+      toggleLabels.forEach(label => { label.classList.toggle('enabled'); });
       sliderLabels.forEach(label => { label.classList.toggle('disabled'); });
       timeSlider.toggleAttribute("disabled");
       colorSlider.toggleAttribute("disabled");

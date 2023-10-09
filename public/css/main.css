@@ -236,6 +236,7 @@ img#ehm-time {
 
 label.enabled {
   color: #0000ff;
+  cursor: pointer;
 }
 
 .slider-label.disabled {
