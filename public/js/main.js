@@ -200,11 +200,12 @@ function loadPage(url) {
     .then(response => response.text())
     .then(html => {
 
-      // Add the HTML to the page
+      // Add the HTML to the page and change the title
       document.getElementById('main-container').innerHTML = html; 
+      document.title = pageTitles[url];
       
-      // Add the map if we're on case-study-1
-      if (url == "/work/case-study-1") { addMap(); }
+      // Add the map if we're on project 1
+      if (url == "/work/1") { addMap(); }
 
       // Add listeners to handle navigation
       document.querySelectorAll('.nav-link').forEach(link => {
@@ -228,11 +229,22 @@ let routes = {
   "/home": "/home",
   "/about": "/about",
   "/work": "/work",
-  "/work/case-study-1": "/work/case-study-1",
-  "/work/case-study-2": "/work/case-study-2",
-  "/work/case-study-3": "/work/case-study-3",
-  "/work/case-study-4": "/work/case-study-4" 
+  "/work/1": "/work/1",
+  "/work/2": "/work/2",
+  "/work/3": "/work/3",
+  "/work/4": "/work/4" 
 };
+
+let pageTitles = {
+  "/home": "Connor Soltas",
+  "/about": "Connor Soltas - About",
+  "/work": "Connor Soltas - Work",
+  "/work/1": "Connor Soltas - Building a prototyping tool to enable new ideas",
+  "/work/2": "Connor Soltas - Vision-setting and vision-enabling",
+  "/work/3": "Connor Soltas - Rapid results on an aggressive timeline",
+  "/work/4": "Connor Soltas - What does pricing do for users?",
+  "/error": "Connor Soltas - page not found"
+}
 
 // Ensure the initial load is properly represented in browser history
 if (!history.state) {
@@ -240,6 +252,7 @@ if (!history.state) {
   history.replaceState({ pageURL: initialPageURL }, '', initialPageURL);
 }
 
+// Actually do the initial page load (with error handling)
 if (routes[path]) {
   loadPage(routes[path]);
 } else {
