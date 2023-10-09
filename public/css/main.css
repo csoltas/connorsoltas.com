@@ -219,6 +219,7 @@ img#ehm-time {
   z-index: 100;
   background: #fff;
   border: solid #000 1px;
+  font-family: 'IBM Plex Mono', sans-serif;
 }
 
 .inline-input {
@@ -231,6 +232,14 @@ img#ehm-time {
 #map-style-toggles {
   display: flex;
   gap: 16px;
+}
+
+label.enabled {
+  color: #0000ff;
+}
+
+.slider-label.disabled {
+  color: #808080;
 }
 
 #map-style-toggles > input {
