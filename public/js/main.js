@@ -241,7 +241,11 @@ function loadPage(page) {
 
       // Add new entry to history
       console.log("Before new state is pushed:", history.length, history.state);
-      history.pushState({pageName: page}, "", (page == "home") ? "/" : `/${page}`);
+      if (page == "home") {
+        history.pushState({pageName: page}, "", "/");
+      } else {
+        history.pushState({pageName: page}, "", `/${page}`);
+      }
       console.log("After new state is pushed:", history.length, history.state);
     });
 }
