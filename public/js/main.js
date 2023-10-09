@@ -236,6 +236,8 @@ function loadPage(page) {
       if (page == "case-study-1") { addMap(); }
 
       // Add listeners to handle navigation
+      // NOTE: we are not reloading index.html with a different path requested in the URL;
+      //       we are dynamically fetching/replacing html content with ajax navigation.
       document.querySelectorAll('.nav-link').forEach(link => {
         link.addEventListener('click', function(e) {
           e.preventDefault();
@@ -258,16 +260,17 @@ let routes = {
   "/": "home",
   "/about": "about",
   "/work": "work",
-  "/work/case-study-1": "case-study-1",
-  "/work/case-study-2": "case-study-2",
-  "/work/case-study-3": "case-study-3",
-  "/work/case-study-4": "case-study-4" 
+  "/case-study-1": "case-study-1",
+  "/case-study-2": "case-study-2",
+  "/case-study-3": "case-study-3",
+  "/case-study-4": "case-study-4" 
 };
 
 if (routes[path]) {
   loadPage(routes[path]);
 } else {
   loadPage("error");
+  // TODO: change URL to display name of an error page
 }
 
 // When back or forward button is clicked
