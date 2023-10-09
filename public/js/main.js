@@ -256,9 +256,16 @@ let routes = {
   "/work/case-study-4": "work/case-study-4" 
 };
 
+// Ensure the initial load is properly represented in browser history
+if (!history.state) {
+  const initialPageName = routes[path];
+  history.replaceState({ pageName: initialPageName }, '', `/${initialPageName}`);
+}
+
 if (routes[path]) {
   loadPage(routes[path]);
 } else {
+  history.pushState({ pageName: "error" }, "", "/error");
   loadPage("error");
 }
 
