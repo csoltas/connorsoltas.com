@@ -260,10 +260,10 @@ let routes = {
   "/": "home",
   "/about": "about",
   "/work": "work",
-  "/case-study-1": "case-study-1",
-  "/case-study-2": "case-study-2",
-  "/case-study-3": "case-study-3",
-  "/case-study-4": "case-study-4" 
+  "/work/case-study-1": "case-study-1",
+  "/work/case-study-2": "case-study-2",
+  "/work/case-study-3": "case-study-3",
+  "/work/case-study-4": "case-study-4" 
 };
 
 if (routes[path]) {
