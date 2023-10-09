@@ -56,25 +56,6 @@ let ephDataSets = {
 // Create aliases for the needed deck classes
 const {DeckGL, MapboxLayer, MapboxOverlay, H3HexagonLayer, PostProcessEffect} = deck;
 
-function updateCSS(page) {
-  
-  // Remove any existing page-specific stylesheet or javascript
-  const existingPageSpecificCSS = document.querySelectorAll('.page-specific');
-  existingPageSpecificCSS.forEach((tag, index) => {
-    tag.remove();
-  });
-
-  // Create a new link element for the stylesheet
-  const link = document.createElement('link');
-  link.classList.add('page-specific');
-  link.rel = 'stylesheet';
-  link.type = 'text/css';
-  link.href =  `/css/${page}.css`;
-
-  // Append the new link element to the head and the new script element to the body
-  document.head.appendChild(link);
-}
-
 function updateHeaderContainer(page) {
   const headerContainer = document.getElementById('header-container');
   const mainContainer = document.querySelector("main");
@@ -217,9 +198,8 @@ function addMap() {
 }
 
 function loadPage(page) {  
-  // updateCSSandJS(page);
   updateHeaderContainer(page);
-  updateMainContainer();
+  // updateMainContainer();
   
   fetch(`/content/${page}-content.html`)
     .then(response => response.text())
