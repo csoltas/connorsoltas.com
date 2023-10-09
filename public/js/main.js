@@ -255,13 +255,13 @@ let path = window.location.pathname;
 console.log(path);
 
 let routes = {
-  "/public/": "home",
-  "/public/about": "about",
-  "/public/work": "work",
-  "/public/work/case-study-1": "case-study-1",
-  "/public/work/case-study-2": "case-study-2",
-  "/public/work/case-study-3": "case-study-3",
-  "/public/work/case-study-4": "case-study-4" 
+  "/": "home",
+  "/about": "about",
+  "/work": "work",
+  "/work/case-study-1": "case-study-1",
+  "/work/case-study-2": "case-study-2",
+  "/work/case-study-3": "case-study-3",
+  "/work/case-study-4": "case-study-4" 
 };
 
 if (routes[path]) {
