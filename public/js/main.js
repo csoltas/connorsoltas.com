@@ -238,6 +238,9 @@ function loadPage(page) {
           loadPage(dest);
         });
       }); 
+    })
+    .catch(error => {
+      console.error('Error during fetch operation:', error);
     });
 }
 
