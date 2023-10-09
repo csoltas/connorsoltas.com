@@ -70,8 +70,9 @@ a.active {
 
 main {
   width: 240px;
-  min-height: 100vh;
+  min-height: (100vh - 230px);
   margin: 0 auto;
+  padding: 115px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
