@@ -246,7 +246,7 @@ function loadPage(page) {
       }); 
 
       // Add new entry to history
-      // history.pushState({pageURL: page}, null, page);
+      history.pushState({pageURL: path}, null, path);
     });
 }
 
@@ -254,7 +254,6 @@ function loadPage(page) {
 // loadPage('home');
 
 let path = window.location.pathname;
-console.log(path);
 
 let routes = {
   "/": "home",
