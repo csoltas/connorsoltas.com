@@ -21,36 +21,36 @@ cmNYT = chroma.scale([
 
 // Map styles for toggle
 let mapStyles = {
-  before: './santurce.json',
-  after: './style-thematic-v2.json'
+  before: '/santurce.json',
+  after: '/style-thematic-v2.json'
 };
 
 // Map EPH datasets for slider
 let ephDataSets = {
-  1: './eph_data_1_071922/10am_pst.json',
-  2: './eph_data_1_071922/11am_pst.json',
-  3: './eph_data_1_071922/12pm_pst.json',
-  4: './eph_data_1_071922/01pm_pst.json',
-  5: './eph_data_1_071922/02pm_pst.json',
-  6: './eph_data_1_071922/03pm_pst.json',
-  7: './eph_data_1_071922/04pm_pst.json',
-  8: './eph_data_1_071922/05pm_pst.json',
-  9: './eph_data_1_071922/06pm_pst.json',
-  10: './eph_data_1_071922/07pm_pst.json',
-  11: './eph_data_1_071922/08pm_pst.json',
-  12: './eph_data_1_071922/09pm_pst.json',
-  13: './eph_data_1_071922/10pm_pst.json',
-  14: './eph_data_1_071922/11pm_pst.json',
-  15: './eph_data_1_071922/12am+1_pst.json',
-  16: './eph_data_1_071922/01am+1_pst.json',
-  17: './eph_data_1_071922/02am+1_pst.json',
-  18: './eph_data_1_071922/03am+1_pst.json',
-  19: './eph_data_1_071922/04am+1_pst.json',
-  20: './eph_data_1_071922/05am+1_pst.json',
-  21: './eph_data_1_071922/06am+1_pst.json',
-  22: './eph_data_1_071922/07am+1_pst.json',
-  23: './eph_data_1_071922/08am+1_pst.json',
-  24: './eph_data_1_071922/09am+1_pst.json',
+  1: '/eph_data_1_071922/10am_pst.json',
+  2: '/eph_data_1_071922/11am_pst.json',
+  3: '/eph_data_1_071922/12pm_pst.json',
+  4: '/eph_data_1_071922/01pm_pst.json',
+  5: '/eph_data_1_071922/02pm_pst.json',
+  6: '/eph_data_1_071922/03pm_pst.json',
+  7: '/eph_data_1_071922/04pm_pst.json',
+  8: '/eph_data_1_071922/05pm_pst.json',
+  9: '/eph_data_1_071922/06pm_pst.json',
+  10: '/eph_data_1_071922/07pm_pst.json',
+  11: '/eph_data_1_071922/08pm_pst.json',
+  12: '/eph_data_1_071922/09pm_pst.json',
+  13: '/eph_data_1_071922/10pm_pst.json',
+  14: '/eph_data_1_071922/11pm_pst.json',
+  15: '/eph_data_1_071922/12am+1_pst.json',
+  16: '/eph_data_1_071922/01am+1_pst.json',
+  17: '/eph_data_1_071922/02am+1_pst.json',
+  18: '/eph_data_1_071922/03am+1_pst.json',
+  19: '/eph_data_1_071922/04am+1_pst.json',
+  20: '/eph_data_1_071922/05am+1_pst.json',
+  21: '/eph_data_1_071922/06am+1_pst.json',
+  22: '/eph_data_1_071922/07am+1_pst.json',
+  23: '/eph_data_1_071922/08am+1_pst.json',
+  24: '/eph_data_1_071922/09am+1_pst.json',
 }
 
 // Create aliases for the needed deck classes
@@ -69,12 +69,12 @@ function updateCSSandJS(page) {
   link.classList.add('page-specific');
   link.rel = 'stylesheet';
   link.type = 'text/css';
-  link.href =  `css/${page}.css`;
+  link.href =  `/css/${page}.css`;
 
   // Create a new script element for the javascript
   const script = document.createElement('script');
   script.classList.add('page-specific');
-  script.src = `js/${page}.js`;
+  script.src = `/js/${page}.js`;
 
   // Append the new link element to the head and the new script element to the body
   document.head.appendChild(link);
@@ -90,7 +90,7 @@ function updateHeaderContainer(page) {
     headerContainer.style.display = 'block'; // Show the header on other pages
 
     // Load the header HTML
-    fetch(`content/header-content.html`)
+    fetch(`/content/header-content.html`)
       .then(response => response.text())
       .then(html => {
         document.getElementById('header-container').innerHTML = html;
@@ -119,7 +119,7 @@ function addMap() {
   // 1. Create the mapbox map with our stylesheet
   const map = new mapboxgl.Map({
     container: document.getElementById('carto-heatmap'), // NOTE: this needs be called AFTER case-study-content.html is loaded into the DOM
-    style: './style-thematic-v2.json', // replace stylesheet here
+    style: '/style-thematic-v2.json', // replace stylesheet here
     center: [-122.2, 37.7],
     zoom: 9,
     pitch: 0,
@@ -135,7 +135,7 @@ function addMap() {
     layers: [
       new H3HexagonLayer({
         id: "deckgl-hexLayer",
-        data: './10pm_pst.json', // replace hex data file here
+        data: '/10pm_pst.json', // replace hex data file here
         extruded: false,
         filled: true,
         stroked: false,
@@ -169,7 +169,7 @@ function addMap() {
           new H3HexagonLayer({
             visible: this.value == 'after' ? true : false,
             id: "deckgl-hexLayer",
-            data: './10pm_pst.json', // replace hex data file here
+            data: '/10pm_pst.json', // replace hex data file here
             extruded: false,
             filled: true,
             stroked: false,
@@ -225,7 +225,7 @@ function loadPage(page) {
   updateHeaderContainer(page);
   updateMainContainer();
   
-  fetch(`content/${page}-content.html`)
+  fetch(`/content/${page}-content.html`)
     .then(response => response.text())
     .then(html => {
 
