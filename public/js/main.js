@@ -77,11 +77,13 @@ function updateCSS(page) {
 
 function updateHeaderContainer(page) {
   const headerContainer = document.getElementById('header-container');
+  const mainContainer = document.querySelector("main");
   
   if (page === 'home') {
     headerContainer.style.display = 'none'; // Hide the header on the home page
   } else {
     headerContainer.style.display = 'block'; // Show the header on other pages
+    mainContainer.style.paddingTop = '115px';
 
     // Load the header HTML
     fetch(`/content/header-content.html`)

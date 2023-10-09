@@ -68,6 +68,8 @@ a.active {
 }
 
 main {
+  position: absolute;
+  min-height: 100vh;
   width: 240px;
   margin: 0 auto;
   display: flex;
