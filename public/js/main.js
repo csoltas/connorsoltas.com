@@ -244,7 +244,7 @@ function loadPage(page) {
       }); 
 
       // Add new entry to history
-      history.pushState({pageURL: page}, null, page);
+      // history.pushState({pageURL: page}, null, page);
     });
 }
 
@@ -252,15 +252,16 @@ function loadPage(page) {
 // loadPage('home');
 
 let path = window.location.pathname;
+console.log(path);
 
 let routes = {
-  "/": "home",
-  "/about": "about",
-  "/work": "work",
-  "/work/case-study-1": "case-study-1",
-  "/work/case-study-2": "case-study-2",
-  "/work/case-study-3": "case-study-3",
-  "/work/case-study-4": "case-study-4" 
+  "/public/": "home",
+  "/public/about": "about",
+  "/public/work": "work",
+  "/public/work/case-study-1": "case-study-1",
+  "/public/work/case-study-2": "case-study-2",
+  "/public/work/case-study-3": "case-study-3",
+  "/public/work/case-study-4": "case-study-4" 
 };
 
 if (routes[path]) {
@@ -270,9 +271,9 @@ if (routes[path]) {
 }
 
 // When back or forward button is clicked
-window.addEventListener('popstate', function(event) {
-  if(event.state) {
-      // Load and display the content associated with the state
-      loadPage(event.state.pageURL);
-  }
-});
+// window.addEventListener('popstate', function(event) {
+//   if(event.state) {
+//       // Load and display the content associated with the state
+//       loadPage(event.state.pageURL);
+//   }
+// });
