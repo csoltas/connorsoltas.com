@@ -62,7 +62,7 @@ function updateHeader(url) {
   if (url === '/home') {
     header.style.display = 'none'; // Hide the header on the home page
   } else {
-    header.style.display = 'block'; // Show the header on other pages
+    header.style.removeProperty('display'); // Show the header on other pages
 
     // Load the header HTML
     fetch(`/content/header-content.html`)

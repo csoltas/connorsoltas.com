@@ -16,8 +16,6 @@ header {
   z-index: 1000;
   background-color: #fff;
   padding: 24px;
-  display: flex;
-  align-items: center;
 }
 
 .links {
@@ -25,7 +23,7 @@ header {
   justify-content: space-between;
   width: 240px;
   margin: 0 auto;
-  font-weight: lighter;
+  font-weight: bold;
 }
 
 a {
@@ -68,6 +66,44 @@ a.active {
   color: #000;
 }
 
+@media screen and (max-width: 425px) {
+  header {
+    width: calc(100vw - 32px);
+    padding-left: 16px;
+    padding-right: 16px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .links {
+    margin: 0;
+    justify-content: space-between;
+  }
+
+  .name-link {
+    position: unset;
+  }
+
+  .header-links {
+    width: auto;
+    gap: 16px;
+  }
+
+  .home-links {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .name-link {
+    display: none;
+  }
+
+  .header-links {
+    width: 100%;
+  }
+}
+
 main {
   width: 240px;
   min-height: calc(100vh - 230px);
@@ -79,6 +115,13 @@ main {
   align-items: center;
   gap: 24px;
   overflow-x: visible;
+}
+
+@media screen and (max-width: 425px) {
+  main {
+    width: calc(100vw - 32px);
+    padding: 80px 16px;
+  }
 }
 
 p {
@@ -108,6 +151,12 @@ h1, h2, h3 {
   width: 100%;
 }
 
+@media screen and (max-width: 425px) {
+  h1 {
+    font-size: 24px;
+  }
+}
+
 .case-studies {
   display: flex;
   flex-direction: column;
@@ -131,6 +180,12 @@ h1, h2, h3 {
   left: -32px;
 }
 
+@media screen and (max-width: 425px) {
+  .case-studies li, .dotted-divider {
+    font-size: 24px;
+  }
+}
+
 .dotted-divider {
   width: 100%;
   display: flex;
@@ -152,6 +207,22 @@ h1, h2, h3 {
   max-width: 100%;
 }
 
+img#photo {
+  width: 400px;
+}
+
+@media screen and (max-width: 425px) {
+  .image-caption {
+    max-width: calc(100vw - 32px);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+  
+  img#photo {
+    width: 100vw;
+  }
+}
+
 .border {
   border: solid #000 1px;
 }
@@ -170,6 +241,16 @@ hr.sm {
   height: 64px;
 }
 
+@media screen and (max-width: 425px) {
+  hr.lg {
+    height: 64px;
+  }
+
+  hr.sm {
+    height: 48px;
+  }
+}
+
 .media-container {
   width: 100vw;
   display: flex;
@@ -183,6 +264,14 @@ hr.sm {
   width: 240px;
 }
 
+@media screen and (max-width: 425px) {
+  .media-caption {
+    width: calc(100vw - 32px);
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
 .media-overlapping > img {
   display: block;
   position: relative;
@@ -191,11 +280,24 @@ hr.sm {
 }
 
 img#ehm-select {
+  width: 500px;
   margin-bottom: -400px;
 }
 
 img#ehm-time {
+  width: 500px;
   padding-left: 300px;
+}
+
+@media screen and (max-width: 425px) {
+  img#ehm-select {
+    width: 100vw;
+    margin-bottom: -80vw;
+  }
+  img#ehm-time {
+    width: 100vw;
+    padding-left: 60vw;
+  }
 }
 
 #carto-heatmap-container {
@@ -249,17 +351,47 @@ label.enabled {
 }
 
 img#activityfeed {
+  width: 500px;
   padding-left: 300px;
   margin-bottom: -500px;
   z-index: 100;
+}
+
+img#analytics {
+  width: 500px;
+}
+
+@media screen and (max-width: 425px) {
+  img#activityfeed {
+    width: 100vw;
+    padding-left: 60vw;
+    margin-bottom: -100vw;
+  }
+
+  img#analytics {
+    width: 100vw;
+  }
 }
 
 iframe.slides {
   border-bottom: 1px solid #000;
 }
 
+@media screen and (max-width: 425px) {
+  iframe.slides {
+    width: 100vw;
+    height: 65vw;
+  }
+
+  iframe.figma {
+    width: 100vw;
+    height: 150vw;
+  }
+}
+
 .iphone-frame-straight {
   background-image: url('/img/iphone-frame.png');
+  background-repeat: no-repeat;
   padding: 20px 22px;
   height: 812px;
   width: 375px;
@@ -267,21 +399,54 @@ iframe.slides {
           drop-shadow(-24px 42px 30px rgba(0,0,0, 0.14));
 }
 
+@media screen and (max-width: 425px) {
+  .iphone-frame-straight {
+    background-size: cover;
+    width: calc(89.5vw - 32px);
+    padding: 4.77vw 5.25vw;
+    height: auto;
+  }
+}
+
 .masked-iphone-straight {
   mask-image: url('/img/iphone-frame-mask.svg');
   -webkit-mask-image: url('/img/iphone-frame-mask.svg');
+  mask-size: 100%;
+  -webkit-mask-size: 100%;
+  width: 100%;
 }
 
 img#ia-profile {
   padding-left: 300px;
   z-index: 100;
   margin-bottom: -280px;
+  width: 500px;
 }
 
 img#ia-map {
   margin-bottom: -200px;
+  width: 500px;
 }
 
 img#ia-trends {
   padding-left: 283px;
+  width: 398px;
+}
+
+@media screen and (max-width: 425px) {
+  img#ia-profile {
+    width: 100vw;
+    padding-left: 60vw;
+    margin-bottom: -56vw;
+  }
+
+  img#ia-map {
+    width: 100vw;
+    margin-bottom: -40vw;
+  }
+
+  img#ia-trends {
+    width: 79.6vw;
+    padding-left: 56.6vw;
+  }
 }
