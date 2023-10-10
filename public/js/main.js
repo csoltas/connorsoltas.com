@@ -157,6 +157,7 @@ function addMap() {
   });
 
   timeSlider.addEventListener('input', function() {
+    cmNYT.classes(colorSlider.value);
     hexLayer.setProps({
       layers: [
         new H3HexagonLayer({
@@ -165,6 +166,7 @@ function addMap() {
           extruded: false,
           filled: true,
           stroked: false,
+          // getFillColor: d => cmNYT(d.eph_predict).rgb(),
           getFillColor: d => cmNYT(d.eph_predict).rgb(),
           getHexagon: d => d.hex_id,
           opacity: 0.2,
@@ -174,7 +176,8 @@ function addMap() {
     })
   });
 
-  colorSlider.addEventListener('input', function() {
+  colorSlider.addEventListener('change', function() {
+    cmNYT.classes(this.value);
     hexLayer.setProps({
       layers: [
         new H3HexagonLayer({
@@ -183,7 +186,7 @@ function addMap() {
           extruded: false,
           filled: true,
           stroked: false,
-          getFillColor: d => cmNYT.classes(Number(this.value))(d.eph_predict).rgb(), // todo: figure out classing or gamma correction
+          getFillColor: d => cmNYT(d.eph_predict).rgb(),
           getHexagon: d => d.hex_id,
           opacity: 0.2,
           beforeId: "building-shadow"
