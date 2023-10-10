@@ -1,5 +1,5 @@
 // Mapbox access token
-mapboxgl.accessToken = "pk.eyJ1IjoidWJlcmNhcnRvIiwiYSI6ImNqZG95YmM2aTByMjgycXFwbDQ1OTQ0M3oifQ.dVLqWkwIJWVRvAHvzES0Xg";
+mapboxgl.accessToken = "pk.eyJ1IjoiY3NvbHRhcyIsImEiOiJjbG5rcWl3NG0xMXFlMmxxaTBicm9qMDdkIn0.PY_DA5dycIZoG0rhiDyDjQ";
 
 // Colormap domain and color scale
 ephColormapDomain = [12.87,31.99];
