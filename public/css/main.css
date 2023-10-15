@@ -282,22 +282,30 @@ hr.sm {
           drop-shadow(-2px 16px 12px rgba(0,0,0, 0.2));
 }
 
-img#ehm-select {
+.media-overlapping > video {
+  display: block;
+  position: relative;
+  filter: drop-shadow(-72px 0px 100px rgba(0,0,0, 0.06))
+          drop-shadow(-2px 16px 12px rgba(0,0,0, 0.2));
+}
+
+
+video#ehm-select {
   width: 500px;
   margin-bottom: -400px;
 }
 
-img#ehm-time {
+video#ehm-time {
   width: 500px;
   padding-left: 300px;
 }
 
 @media screen and (max-width: 425px) {
-  img#ehm-select {
+  video#ehm-select {
     width: 100vw;
     margin-bottom: -80vw;
   }
-  img#ehm-time {
+  video#ehm-time {
     width: 100vw;
     padding-left: 60vw;
   }
@@ -353,25 +361,25 @@ label.enabled {
   display: none;
 }
 
-img#activityfeed {
+video#activityfeed {
   width: 500px;
   padding-left: 300px;
   margin-bottom: -500px;
   z-index: 100;
 }
 
-img#analytics {
+video#analytics {
   width: 500px;
 }
 
 @media screen and (max-width: 425px) {
-  img#activityfeed {
+  video#activityfeed {
     width: 100vw;
     padding-left: 60vw;
     margin-bottom: -100vw;
   }
 
-  img#analytics {
+  video#analytics {
     width: 100vw;
   }
 }
