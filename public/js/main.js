@@ -207,8 +207,8 @@ function loadPage(url) {
       document.getElementById('main-container').innerHTML = html; 
       document.title = pageTitles[url];
       
-      // Add the map if we're on project 1
-      if (url == "/work/1") { addMap(); }
+      // Add the map if we're on project 2
+      if (url == "/work/2") { addMap(); }
 
       // Add listeners to handle navigation
       document.querySelectorAll('.nav-link').forEach(link => {

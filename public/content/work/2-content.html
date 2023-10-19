@@ -1,58 +1,75 @@
-<h1>Vision-setting and vision-enabling</h1>
+<h1>Building a prototyping tool to enable new ideas</h1>
 <p>
-  In 2021, I was one of two designers asked to lead a redesign of Uber's complex and cumbersome driver app.
+  In late 2022, I conceived and built a tool for Uber designers to work on cartography and geospatial visualizations in tandem.
 </p>
 <p>
-  Despite internal support for our vision, at its core was a map overhaul that Uber was in no position to execute, either organizationally or architecturally.
+  That tool helped me lead a redesign of the Uber driver/courier app's most used feature -- the main map -- from the ground up.
 </p>
 <p>
-  I proposed and led an initiative across teams to change that.
+  The tooling I built sped up the redesign while improving the quality of every stage of output.
 </p>
 
-<!-- The initiative I led to change that accomplished XYZ -->
-
-<hr class="sm">
+<hr class="lg">
 
 <div class="media-container">
-  <p class="media-caption">Some of my redesign concepts. Or scroll down for more about that initiative &darr;</p>
-  <div class="iphone-frame-straight">
-    <video autoplay loop muted playsinline class="masked-iphone-straight">
-      <source src="/img/ia.webm">
-      <source src="/img/ia.mp4">
-    </video>
-  </div>
-  <div class="media-overlapping">
-    <img src="/img/ia-profile.png" id="ia-profile">
-    <img src="/img/ia-map.png" id="ia-map">
-    <img src="/img/ia-trends.png" id="ia-trends">
+  <p class="media-caption">Play around with it here, or see design deliverables below &darr;</p>
+  <div id="carto-heatmap-container" class="border">
+    <div id="carto-heatmap-controls-container">
+      <div id="map-style-toggles">
+        <input type="radio" name="style" id="before" value="before">
+        <label for="before" class="enabled">Before</label>
+        |
+        <input type="radio" name="style" id="after" value="after" checked>
+        <label for="after">After</label>
+      </div>
+      <div class="inline-input">
+        <label for="map-data-slider-time" class="slider-label">Time</label>
+        <input type="range" name="time" id="map-data-slider-time" 
+            min="1" max="24" value="13">
+      </div>
+      <div class="inline-input">
+        <label for="map-data-slider-color" class="slider-label">Classes</label>
+        <input type="number" name="time" id="map-data-slider-color"
+            min="0" max="20" value="10" >
+      </div>
+    </div>
+    <div id="carto-heatmap"></div>
   </div>
 </div>
 
 <hr class="sm">
 
-<h2>A cross-functional initiative to bring it to life</h2>
 <p>
-  To overhaul the map as we envisioned, many teams would need to collaborate on a tech migration with a new design.
+  This infrastructure allowed me to explore more radical ideas faster, at high fidelity, with production code as a deliverable.
 </p>
+
 <p>
-  But the map had no clear owner to lead that collaboration -- surprisingly, since it's 75% of the app home screen.
+  The new design completely reshaped the map into a stark canvas for data visualization.
 </p>
+
 <p>
-  So I became its owner. I brokered conversations between teams with competing short-term incentives, presented to execs, and led those
-  teams with a unified plan.
+  This launch is still under development at Uber, but at the time I left, it had been presented company-wide and even in board meetings.
 </p>
 
 <hr class="sm">
 
 <div class="media-container">
   <p class="media-caption">
-    Here's an example of how I did that (2021-22) &darr;
+    Some motion studies from presentations to Uber's CPO 
+    <!-- (I was responsible for the basemap and data visualization design; another designer led
+    the non-map UI shown here)  -->
+    &darr;
   </p>
-  <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQwZX7Qk2qwElRsLmC_SsRtDE8ZWW5np8Ngxj7L4IprpDJ2LJgcEXNczIFazDeB79gGnaGvb0PLPPoP/embed?start=false&loop=false&delayms=3000"
-      frameborder="0" width="1024" height="612" 
-      allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
-      class="slides">
-  </iframe>
+  <div class="media-overlapping">
+    <video autoplay loop muted playsinline id="ehm-select">
+      <source src="/img/ehm-select-tilt.webm">
+      <img src="/img/ehm-select-tilt.gif">
+    </video>
+    <video autoplay loop muted playsinline id="ehm-time">
+      <source src="/img/ehm-time-tilt.webm">
+      <img src="/img/ehm-time-tilt.gif">
+    </video>
+  </div>
 </div>
 
 <hr class="sm">
