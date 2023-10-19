@@ -6,7 +6,8 @@ body {
   margin: 0;
   background-color: #fff;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: 16px;
   text-align: justify;
   color: #000;
   overflow-x: hidden;
@@ -25,7 +26,8 @@ header {
 .links {
   display: flex;
   justify-content: space-between;
-  width: 240px;
+  /* width: 240px; */
+  width: 400px;
   margin: 0 auto;
 }
 
@@ -108,7 +110,8 @@ a.active {
 }
 
 main {
-  width: 240px;
+  /* width: 240px; */
+  width: 400px;
   min-height: calc(100vh - 230px);
   margin: 0 auto;
   padding: 115px 0;
@@ -130,13 +133,15 @@ main {
 p {
   margin: 0;
   width: 100%;
+  /* text-align: left; */
 }
 
 .intro {
   width: 100%;
+  text-align: justify;
 }
 
-p.text-justify-last {
+.text-justify-last {
   -moz-text-align-last: justify; /* For Firefox prior 58.0 */
   text-align-last: justify;
 }
@@ -149,7 +154,8 @@ span.wide {
 h1, h2, h3 {
   font-family: 'IBM Plex Mono', sans-serif;
   /* letter-spacing: 2px; */
-  font-size: 14px;
+  /* font-size: 14px; */
+  font-size: 16px;
   /* line-height: 14px; */
   text-align: justify;
   color: #000;
@@ -184,7 +190,7 @@ h1, h2, h3 {
 .case-studies li:before {
   content: counter(list-counter) ""; /* Display the counter value */
   position: absolute;
-  left: -32px;
+  left: -36px;
 }
 
 @media screen and (max-width: 425px) {
@@ -263,12 +269,13 @@ hr.sm {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 12px;
   overflow-y: visible;
 }
 
 .media-caption {
-  width: 240px;
+  /* width: 240px; */
+  width: 400px;
 }
 
 @media screen and (max-width: 425px) {
@@ -412,6 +419,7 @@ iframe.slides {
   width: 375px;
   filter: drop-shadow(-119px 92px 80px rgba(0,0,0, 0.08))
           drop-shadow(-24px 42px 30px rgba(0,0,0, 0.14));
+  margin-bottom: 24px;
 }
 
 @media screen and (max-width: 425px) {
