@@ -6,7 +6,6 @@ body {
   margin: 0;
   background-color: #fff;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
-  /* font-size: 14px; */
   font-size: 16px;
   text-align: justify;
   color: #000;
@@ -17,17 +16,21 @@ header {
   position: fixed;
   top: 0;
   width: calc(100vw - 48px);
-  /* margin-bottom: 48px; */
   z-index: 1000;
-  background-color: #fff;
+  /* background-color: #fff; */
   padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
 }
 
 .links {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  /* justify-content: space-between; */
   /* width: 240px; */
-  width: 400px;
+  width: 320px;
   margin: 0 auto;
 }
 
@@ -59,7 +62,7 @@ a.active {
   color: #000;
   font-weight: normal;
   text-decoration: none;
-  position: absolute;
+  /* position: absolute; */
 }
 
 .name-link:hover {
@@ -76,7 +79,6 @@ a.active {
     width: calc(100vw - 32px);
     padding-left: 16px;
     padding-right: 16px;
-    display: flex;
     justify-content: space-between;
   }
 
@@ -111,10 +113,10 @@ a.active {
 
 main {
   /* width: 240px; */
-  width: 400px;
-  min-height: calc(100vh - 230px);
+  width: 1024px;
+  min-height: calc(100vh - 452px);
   margin: 0 auto;
-  padding: 115px 0;
+  padding: 226px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -133,12 +135,23 @@ main {
 p {
   margin: 0;
   width: 100%;
-  /* text-align: left; */
+  line-height: 150%;
 }
 
 .intro {
-  width: 100%;
+  width: 320px;
   text-align: justify;
+}
+
+.divider {
+  border-bottom: dotted #000 2px;
+}
+
+.scroll-hint {
+  color: #c4c4c4;
+  font-family: 'IBM Plex Mono', sans-serif;
+  text-align: center;
+  font-weight: 400;
 }
 
 .text-justify-last {
@@ -153,11 +166,10 @@ span.wide {
 
 h1, h2, h3 {
   font-family: 'IBM Plex Mono', sans-serif;
-  /* letter-spacing: 2px; */
-  /* font-size: 14px; */
-  font-size: 16px;
-  /* line-height: 14px; */
-  text-align: justify;
+  letter-spacing: -1px;
+  font-size: 64px;
+  line-height: 130%;
+  text-align: left;
   color: #000;
   font-weight: normal;
   margin: 0 0 12px;
@@ -221,7 +233,7 @@ h1, h2, h3 {
 }
 
 img#photo {
-  width: 400px;
+  width: 320px;
 }
 
 @media screen and (max-width: 425px) {
@@ -241,9 +253,12 @@ img#photo {
 }
 
 hr {
+  width: 0;
   border: none;
+  border-left: dotted #000 2px; /* Overrides "border: none" for only 1 side */
   background: none;
-  color: none;
+  margin-top: -16px;
+  margin-bottom: -16px;
 }
 
 hr.lg {
@@ -274,8 +289,7 @@ hr.sm {
 }
 
 .media-caption {
-  /* width: 240px; */
-  width: 400px;
+  text-align: center;
 }
 
 @media screen and (max-width: 425px) {
