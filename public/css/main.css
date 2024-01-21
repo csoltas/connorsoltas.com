@@ -161,19 +161,34 @@ p {
 
 span.wide {
   font-family: 'IBM Plex Mono', sans-serif;
+  font-weight: lighter;
   /* letter-spacing: 2px; */
 }
 
 h1, h2, h3 {
   font-family: 'IBM Plex Mono', sans-serif;
-  letter-spacing: -1px;
-  font-size: 64px;
   line-height: 130%;
-  text-align: left;
   color: #000;
   font-weight: normal;
-  margin: 0 0 12px;
   width: 100%;
+}
+
+h1 {
+  font-size: 64px;
+  letter-spacing: -1px;
+  margin: 0 0 12px;
+  text-align: left;
+}
+
+h2 {
+  font-size: 16px;
+  margin: 0;
+  text-align: center;
+}
+
+h3 {
+  font-size: 16px;
+  margin: 0;
 }
 
 @media screen and (max-width: 425px) {
