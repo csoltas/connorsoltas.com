@@ -242,8 +242,8 @@ let pageTitles = {
   "/home": "Connor Soltas",
   "/about": "Connor Soltas - About",
   "/work": "Connor Soltas - Work",
-  "/work/1": "Connor Soltas - Building a prototyping tool to enable new ideas",
-  "/work/2": "Connor Soltas - Vision-setting and vision-enabling",
+  "/work/1": "Connor Soltas - On setting a vision (and actually getting some of it built)",
+  "/work/2": "Connor Soltas - Building design tools to break out of old thinking",
   "/work/3": "Connor Soltas - Rapid results on an aggressive timeline",
   "/work/4": "Connor Soltas - What does pricing do for users?",
   "/error": "Connor Soltas - page not found"
