@@ -123,7 +123,6 @@ main {
   align-items: center;
   gap: 24px;
   overflow-x: visible;
-  padding: 116px 0 0;
 }
 
 @media screen and (max-width: 425px) {
