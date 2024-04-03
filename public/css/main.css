@@ -15,14 +15,14 @@ body {
 header {
   position: fixed;
   top: 0;
-  width: 100vw;
+  width: calc(100vw - 48px);
   z-index: 1000;
   /* background-color: #fff; */
-  padding: 24px 0;
+  padding: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* gap: 8px; */
+  gap: 24px;
 }
 
 .links {
@@ -32,10 +32,6 @@ header {
   /* width: 240px; */
   width: 320px;
   margin: 0 auto;
-}
-
-.home-links {
-  margin: 12px 0;
 }
 
 a {
@@ -97,11 +93,11 @@ a.active {
 
   .header-links {
     width: auto;
+    gap: 16px;
   }
 
   .home-links {
     width: 100%;
-    margin: 0;
   }
 }
 
@@ -116,16 +112,18 @@ a.active {
 }
 
 main {
+  /* width: 240px; */
   width: 1024px;
-  min-height: 100vh;
+  min-height: calc(100vh - 452px);
   margin: 0 auto;
+  padding: 226px 0;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 8px; */
+  gap: 24px;
   overflow-x: visible;
-  /* padding: 116px 0 0; */
+  padding: 116px 0 0;
 }
 
 @media screen and (max-width: 425px) {
@@ -136,7 +134,7 @@ main {
 }
 
 p {
-  margin: 12px 0;
+  margin: 0;
   width: 100%;
   line-height: 150%;
 }
@@ -148,7 +146,6 @@ p {
 
 .divider {
   border-bottom: dotted #000 2px;
-  margin: 12px 0;
 }
 
 .scroll-hint {
@@ -204,9 +201,7 @@ h3 {
 .case-studies {
   display: flex;
   flex-direction: column;
-  /* gap: 8px; */
-  text-align: center;
-  line-height: 150%;
+  gap: 24px;
   list-style-type: none;
   padding: 0;
   margin: 0;
@@ -214,19 +209,16 @@ h3 {
 }
 
 .case-studies li {
-  counter-increment: list-counter; /* Increments the counter */
-}
-
-.case-studies li > a {
   font-family: 'IBM Plex Mono';
   color: #0000ff;
+  counter-increment: list-counter; /* Increments the counter */
+  position: relative;
 }
 
 .case-studies li:before {
-  font-family: 'IBM Plex Mono';
-  color: #0000ff;
-  content: "0" counter(list-counter) "."; /* Display the counter value */
-  margin-right: 16px;
+  content: counter(list-counter) ""; /* Display the counter value */
+  position: absolute;
+  left: -36px;
 }
 
 @media screen and (max-width: 425px) {
@@ -240,10 +232,6 @@ h3 {
   display: flex;
   justify-content: space-between;
   font-weight: lighter;
-}
-
-.case-studies li p {
-  margin: 0;
 }
 
 .image-container {
@@ -285,7 +273,8 @@ hr {
   border: none;
   border-left: dotted #000 2px; /* Overrides "border: none" for only 1 side */
   background: none;
-  margin: 8px auto;
+  margin-top: -16px;
+  margin-bottom: -16px;
 }
 
 hr.lg {
@@ -294,14 +283,6 @@ hr.lg {
 
 hr.sm {
   height: 64px;
-}
-
-hr.xs {
-  height: 24px;
-}
-
-hr.xxs {
-  height: 10px;
 }
 
 @media screen and (max-width: 425px) {
