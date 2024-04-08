@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Connor Soltas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=IBM+Plex+Sans+Condensed:wght@100;300&family=IBM+Plex+Sans:wght@300;600&display=swap" rel="stylesheet">
+    
+    <!-- <script src="/js/h3-js.umd.js"></script>
+    <script src="https://unpkg.com/deck.gl@latest/dist.min.js"></script>
+    <script src="https://unpkg.com/@luma.gl/shadertools@8.5.16/dist/dist.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' /> -->
+    
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+</head>
+<body>
+    <header class="background-white gap-8px" id="header-container">
+      <a href="/" class="nav-link name-link">Connor Soltas</a>
+      <hr class="height-8px">
+      <div class="links header-links">
+        <a href="/work.html" class="nav-link">Work</a> 
+      </div> 
+      <hr class="height-128px" id="connector-header-to-main">
+      <span class="font-mono display-none" id="article-number">03</span>
+    </header>
+    <div class="height-header width-100p">
+      <!-- Acts as a spacer to keep the article content below the header -->
+    </div>
+    <main class="flex width-1024px" id="main-container">
+      <h1 id="article-title">Rapid results on an aggressive timeline</h1>
+
+      <div class="flex width-100p gap-32px pad-top-16px pad-bottom-16px">
+        <span class="display-inline font-mono">Uber</span>
+        <span class="display-inline font-mono">2020</span>
+        <span class="display-inline font-mono">Lead designer (of 3)</span>
+      </div>
+
+      <p>
+        Uber drivers use the driver app's Activity Feed every day to review their recent trips and earnings. But its design buried that use case deep, forcing
+        users to drill down into each individual receipt for the info they need. In 2020 I led a one-month rethink of the feature, which had a dramatic 
+        effect both on engagement (+41%) and on that painful drill-down behavior (&minus;38%).
+      </p>
+
+      <hr class="height-128px">
+
+      <div class="media-container gap-8px">
+        <p class="media-caption">Take a peek at the new design in action &darr;</p>
+        <div class="media-overlapping">
+          <video autoplay loop muted playsinline id="activityfeed">
+            <source src="/img/activityfeed.webm">
+            <img src="/img/activityfeed.gif">
+          </video>
+          <video autoplay loop muted playsinline id="analytics">
+            <source src="/img/analytics.webm">
+            <img src="/img/analytics.gif">
+          </video>
+        </div>
+      </div>
+
+      <hr class="sm">
+
+      <p>
+        To meet our aggressive timeline, I worked directly with the VP of Driver and design leadership, instead of a conventional review process.
+      </p>
+
+      <p> 
+        Meanwhile I worked with Engineering to ensure my UI framework would extend to the team's future plans. I also updated the Activity Feed's 
+        visual language to Uber's then-new design system.
+      </p>
+
+      <p>
+        The rapid progress motivated a central focus on Earnings UI in the team's 2021 roadmap.
+      </p>
+
+      <hr class="sm">
+
+      <div class="media-container">
+        <p class="media-caption">The full UI framework I delivered &darr;</p>
+        <iframe src="https://www.figma.com/embed?embed_host=share&url=https%3A%2F%2Fwww.figma.com%2Ffile%2F1ncCZWtuQAFRzCgfiyk3hG%2F%255BSoltas-Portfolio%255D-Earnings-Activity-Feed-V1%3Ftype%3Ddesign%26node-id%3D0%253A1%26mode%3Ddesign%26t%3DD68Jjf44afGH9Sek-1" 
+            allowfullscreen
+            width="1024" height="748"
+            class="border figma">
+        </iframe>
+      </div>      
+    </main>
+    <!-- <script src="/js/main.js"></script> -->
+</body>
+</html>
+

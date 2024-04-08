@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Connor Soltas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=IBM+Plex+Sans+Condensed:wght@100;300&family=IBM+Plex+Sans:wght@300;600&display=swap" rel="stylesheet">
+    
+    <!-- <script src="/js/h3-js.umd.js"></script>
+    <script src="https://unpkg.com/deck.gl@latest/dist.min.js"></script>
+    <script src="https://unpkg.com/@luma.gl/shadertools@8.5.16/dist/dist.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' /> -->
+    
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+</head>
+<body>
+    <header class="background-white gap-8px" id="header-container">
+      <a href="/" class="nav-link name-link">Connor Soltas</a>
+      <hr class="height-8px">
+      <div class="links header-links">
+        <a href="/work.html" class="nav-link">Work</a> 
+      </div> 
+      <hr class="height-128px" id="connector-header-to-main">
+      <span class="font-mono display-none" id="article-number">02</span>
+    </header>
+    <div class="height-header width-100p">
+      <!-- Acts as a spacer to keep the article content below the header -->
+    </div>
+    <main class="flex width-1024px" id="main-container">
+      <h1 id="article-title">Building design tools to break out of old thinking</h1>
+
+      <div class="flex width-100p gap-32px pad-top-16px pad-bottom-16px">
+        <span class="display-inline font-mono">Uber</span>
+        <span class="display-inline font-mono">2022-2023</span>
+        <span class="display-inline font-mono">Design & engineering lead</span>
+      </div>
+
+      <p>
+        In late 2022, I conceived and built a tool for Uber designers to work on cartography and geospatial visualizations in tandem. That tool helped me
+        lead a redesign of the Uber driver/courier app's most used feature -- the main map -- from the ground up. The tooling I built sped up the redesign 
+        while improving the quality of every stage of output.
+      </p>
+
+      <hr class="height-128px">
+
+      <div class="media-container gap-8px">
+        <p class="media-caption">Play around with it here, or see design deliverables below &darr;</p>
+        <div id="carto-heatmap-container" class="border">
+          <div id="carto-heatmap-controls-container">
+            <div id="map-style-toggles">
+              <input type="radio" name="style" id="before" value="before">
+              <label for="before" class="enabled">Before</label>
+              |
+              <input type="radio" name="style" id="after" value="after" checked>
+              <label for="after">After</label>
+            </div>
+            <div class="inline-input">
+              <label for="map-data-slider-time" class="slider-label">Time</label>
+              <input type="range" name="time" id="map-data-slider-time" 
+                  min="1" max="24" value="13">
+            </div>
+            <div class="inline-input">
+              <label for="map-data-slider-color" class="slider-label">Classes</label>
+              <input type="number" name="time" id="map-data-slider-color"
+                  min="0" max="20" value="10" >
+            </div>
+          </div>
+          <div id="carto-heatmap"></div>
+        </div>
+      </div>
+
+      <p>
+        This infrastructure allowed me to explore more radical ideas faster, at high fidelity, with production code as a deliverable. The new design -- which was a
+        collaboration with one other designer, who led the non-map UI -- completely reshaped the map into a stark canvas for data visualization. This launch is 
+        still under development at Uber, but at the time I left, it had been presented company-wide and even in board meetings.
+      </p>
+
+      <hr class="sm">
+
+      <div class="media-container gap-8px">
+        <p class="media-caption">
+          Some motion studies from presentations to Uber's CPO 
+          <!-- (I was responsible for the basemap and data visualization design; another designer led
+          the non-map UI shown here)  -->
+          &darr;
+        </p>
+        <div class="media-overlapping">
+          <video autoplay loop muted playsinline id="ehm-select">
+            <source src="/img/ehm-select-tilt.webm">
+            <img src="/img/ehm-select-tilt.gif">
+          </video>
+          <video autoplay loop muted playsinline id="ehm-time">
+            <source src="/img/ehm-time-tilt.webm">
+            <img src="/img/ehm-time-tilt.gif">
+          </video>
+        </div>
+      </div>
+    </main>
+    <script src="/js/main.js"></script>
+</body>
+</html>

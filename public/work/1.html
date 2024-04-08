@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Connor Soltas</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;600&family=IBM+Plex+Sans+Condensed:wght@100;300&family=IBM+Plex+Sans:wght@300;600&display=swap" rel="stylesheet">
+    
+    <!-- <script src="/js/h3-js.umd.js"></script>
+    <script src="https://unpkg.com/deck.gl@latest/dist.min.js"></script>
+    <script src="https://unpkg.com/@luma.gl/shadertools@8.5.16/dist/dist.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chroma-js/2.4.2/chroma.min.js" integrity="sha512-zInFF17qBFVvvvFpIfeBzo7Tj7+rQxLeTJDmbxjBz5/zIr89YVbTNelNhdTT+/DCrxoVzBeUPVFJsczKbB7sew==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.js'></script>
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.9.1/mapbox-gl.css' rel='stylesheet' /> -->
+    
+    <link rel="stylesheet" href="/css/main.css">
+    <!-- <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1.0">
+    <meta name="apple-mobile-web-app-capable" content="yes" /> -->
+</head>
+<body>
+    <header class="background-white gap-8px" id="header-container">
+      <a href="/" class="nav-link name-link">Connor Soltas</a>
+      <hr class="height-8px">
+      <div class="links header-links">
+        <a href="/work.html" class="nav-link">Work</a> 
+      </div> 
+      <hr class="height-128px" id="connector-header-to-main">
+      <span class="font-mono display-none" id="article-number">01</span>
+    </header>
+
+    <div class="height-header width-100p">
+      <!-- Acts as a spacer to keep the article content below the header -->
+    </div>
+
+    <main class="flex width-1024px" id="main-container">
+      <h1 id="article-title">On setting a vision (and actually getting some of it built)</h1>
+
+      <div class="flex width-100p gap-32px pad-top-16px pad-bottom-16px">
+        <span class="display-inline font-mono">Uber</span>
+        <span class="display-inline font-mono">2021-2022</span>
+        <span class="display-inline font-mono">Design lead & product strategy</span>
+      </div>
+
+      <p>
+        In 2021, I was one of two designers asked to lead a redesign of Uber's complex and cumbersome driver app. Despite internal support for our vision,
+        at its core was a map overhaul that Uber was in no position to execute, either organizationally or architecturally. I proposed and led an org-wide
+        initiative to change that.
+      </p>
+
+      <!-- The initiative I led to change that accomplished XYZ -->
+
+      <hr class="height-128px margin-topbottom-8px">
+
+      <div class="flex media-container gap-8px">
+        <p class="media-caption">Some of my redesign concepts &darr;</p>
+        <div class="iphone-frame-straight">
+          <video autoplay loop muted playsinline class="masked-iphone-straight">
+            <source src="/img/ia.webm">
+            <source src="/img/ia.mp4">
+          </video>
+        </div>
+        <div class="media-overlapping">
+          <img src="/img/ia-profile.png" id="ia-profile">
+          <img src="/img/ia-map.png" id="ia-map">
+          <img src="/img/ia-trends.png" id="ia-trends">
+        </div>
+      </div>
+
+      <hr class="sm margin-topbottom-8px">
+
+      <h2 class="pad-top-16px pad-bottom-16px">A cross-functional initiative to bring it to life</h2>
+      <p>
+        To overhaul the map as we envisioned, many teams would need to collaborate on a tech migration and a new design. But the map had no clear 
+        product owner to lead that collaboration -- surprisingly, since it's 75% of the app home screen. So I became its owner. I brokered conversations between 
+        four teams with competing short-term incentives, presented to execs, and led those teams with a unified plan.
+      </p>
+
+      <hr class="sm margin-topbottom-8px">
+
+      <div class="flex media-container gap-8px">
+        <p class="media-caption">
+          Here's an example of how I did that (2021-22) &darr;
+        </p>
+        <iframe src="https://docs.google.com/presentation/d/e/2PACX-1vQwZX7Qk2qwElRsLmC_SsRtDE8ZWW5np8Ngxj7L4IprpDJ2LJgcEXNczIFazDeB79gGnaGvb0PLPPoP/embed?start=false&loop=false&delayms=3000"
+            frameborder="0" width="1024" height="612" 
+            allowfullscreen="true" mozallowfullscreen="true" webkitallowfullscreen="true"
+            class="slides">
+        </iframe>
+      </div>
+    </main>
+    <script src="/js/main.js"></script>
+</body>
+</html>

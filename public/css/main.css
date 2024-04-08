@@ -7,9 +7,16 @@ body {
   background-color: #fff;
   font-family: 'IBM Plex Sans Condensed', sans-serif;
   font-size: 16px;
-  text-align: justify;
   color: #000;
   overflow-x: hidden;
+}
+
+.text-justify {
+  text-align: justify;
+}
+
+.text-center {
+  text-align: center;
 }
 
 header {
@@ -18,24 +25,83 @@ header {
   width: 100vw;
   z-index: 1000;
   /* background-color: #fff; */
-  padding: 24px 0;
+  padding: 24px 0 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
   /* gap: 8px; */
 }
 
-.links {
-  display: flex;
-  justify-content: center;
-  /* justify-content: space-between; */
-  /* width: 240px; */
-  width: 320px;
-  margin: 0 auto;
+#connector-header-to-main {
+  transition: height 0.1s;
 }
 
-.home-links {
+/* .links {
+  display: flex;
+  justify-content: center;
+  width: 320px;
+  margin: 0 auto;
+} */
+
+/* .home-links {
   margin: 12px 0;
+} */
+
+.display-inline {
+  display: inline;
+}
+
+.display-block {
+  display: block;
+}
+
+.display-none {
+  display: none;
+}
+
+.width-100p {
+  width: 100%;
+}
+
+.width-320px {
+  width: 320px;
+}
+
+.width-1024px {
+  width: 1024px;
+}
+
+.height-8px {
+  height: 8px;
+}
+
+.height-128px {
+  height: 128px;
+}
+
+.height-header {
+  height: 234px;
+}
+
+.margin-topbottom-8px {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
+
+.margin-bottom-8px {
+  margin-bottom: 8px;
+}
+
+.pad-top-16px {
+  padding-top: 16px;
+}
+
+.pad-bottom-16px {
+  padding-bottom: 16px;
+}
+
+.background-white {
+  background-color: #fff;
 }
 
 a {
@@ -115,17 +181,34 @@ a.active {
   }
 }
 
+.flex {
+  display: flex;
+}
+
+.flex-grow-0 {
+  flex-grow: 0;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+.flex-shrink-0 {
+  flex-shrink: 0;
+}
+
 main {
   width: 1024px;
-  min-height: calc(100vh - 116px);
   margin: 0 auto;
-  display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* gap: 8px; */
   overflow-x: visible;
-  padding: 116px 0 0;
+  /* gap: 12px; */
+}
+
+.height-100vh {
+  min-height: 100vh;
 }
 
 @media screen and (max-width: 425px) {
@@ -136,26 +219,34 @@ main {
 }
 
 p {
-  margin: 12px 0;
-  width: 100%;
+  margin: 0;
   line-height: 150%;
 }
 
-.intro {
-  width: 320px;
-  text-align: justify;
-}
-
-.divider {
+.divider-horizontal {
+  width: 100%;
   border-bottom: dotted #000 2px;
-  margin: 12px 0;
+  /* margin: 12px 0; */
 }
 
-.scroll-hint {
-  color: #c4c4c4;
-  font-family: 'IBM Plex Mono', sans-serif;
-  text-align: center;
-  font-weight: 400;
+.space-between {
+  justify-content: space-between;
+}
+
+.gap-8px {
+  gap: 8px;
+}
+
+.gap-16px {
+  gap: 16px;
+}
+
+.gap-24px {
+  gap: 24px;
+}
+
+.gap-32px {
+  gap: 32px;
 }
 
 .text-justify-last {
@@ -163,10 +254,18 @@ p {
   text-align-last: justify;
 }
 
-span.wide {
+.font-mono {
   font-family: 'IBM Plex Mono', sans-serif;
   font-weight: lighter;
   /* letter-spacing: 2px; */
+}
+
+.line-height-150p {
+  line-height: 150%;
+}
+
+.opacity-0 {
+  opacity: 0;
 }
 
 h1, h2, h3 {
@@ -285,7 +384,7 @@ hr {
   border: none;
   border-left: dotted #000 2px; /* Overrides "border: none" for only 1 side */
   background: none;
-  margin: 8px auto;
+  margin: 0 auto;
 }
 
 hr.lg {
@@ -319,7 +418,7 @@ hr.xxs {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  /* gap: 12px; */
   overflow-y: visible;
 }
 

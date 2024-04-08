@@ -19,20 +19,47 @@
     <meta name="apple-mobile-web-app-capable" content="yes" /> -->
 </head>
 <body>
-    <header id="header-container">
-        <!-- content for the header will be loaded here -->
+    <header class="background-white gap-8px" id="header-container">
+      <a href="/" class="nav-link name-link" id="name" data-flip-id="name">Connor Soltas</a>
+      <hr class="height-8px">
+      <div class="links header-links">
+        <a href="/work.html" class="nav-link">Work</a> 
+      </div> 
     </header>
-    <main class="flex height-100vh width-320px gap-16px" id="main-container">
-        <p class="text-justify">
-            <span class="font-mono" id="name" data-flip-id="name">Connor Soltas</span> is a designer specializing in product strategy and interfaces for emerging technologies.
-            Most recently working on mechanism design, data viz, and product strategy at Uber.
-        </p>
-        <div class="divider-horizontal"></div>
-        <div class="flex width-100p space-between links home-links">
-            <a href="/about.html" class="nav-link">About</a>
-            <a href="/work.html" class="nav-link">Work</a>
-            <a href="/contact.html" class="nav-link" id="contact">Contact</a>
-        </div>
+    <main class="flex width-1024px gap-8px height-100vh" id="main-container">
+
+      <hr class="flex-grow-1"></hr>
+
+      <ol class="case-studies flex-grow-0 flex-shrink-0 gap-8px">
+        <li>
+          <a href="/work/1.html" class="nav-link">On setting a vision (and actually getting some of it built)</a>
+          <p>Design and product strategy (2021-2022, Uber)</p>
+        </li>
+        
+        <hr class="xs">
+        
+        <li>
+          <a href="/work/2.html" class="nav-link">Building design tools to break out of old thinking</a>
+          <p>Cartography and engineering (2022-2023, Uber)</p>
+        </li>
+        
+        <hr class="xs">
+        
+        <li>
+          <a href="/work/3.html" class="nav-link">Rapid results on an aggressive timeline</a>
+          <p>Design systems/frameworks and business impact (2020, Uber)</p>
+        </li>
+        
+        <hr class="xs">
+        
+        <li>
+          <a href="/work/4.html" class="nav-link">What does pricing do for users?</a>
+          <p>Design sprint and UX research (2019, Uber)</p>
+        </li>
+      </ol>
+
+      <hr class="flex-grow-1 opacity-0"></hr>
+
     </main>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/Flip.min.js"></script>
