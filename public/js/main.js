@@ -196,91 +196,118 @@
 //   });
 // }
 
-// function loadPage(url) {  
-//   updateHeader(url);
-  
-//   fetch(`/content${url}-content.html`)
-//     .then(response => response.text())
-//     .then(html => {
-
-//       // Add the HTML to the page and change the title
-//       document.getElementById('main-container').innerHTML = html; 
-//       document.title = pageTitles[url];
-      
-//       // Add the map if we're on project 2
-//       if (url == "/work/2") { addMap(); }
-
-//       // Add listeners to handle navigation
-//       document.querySelectorAll('.nav-link').forEach(link => {
-//         link.addEventListener('click', function(e) {
-//           e.preventDefault();
-//           const dest = this.getAttribute('href');
-//           history.pushState({pageURL: dest}, "", dest);
-//           loadPage(dest);
-//         });
-//       }); 
-//     })
-//     .catch(error => {
-//       console.error('Error during fetch operation:', error);
-//     });
-// }
-
-// let path = window.location.pathname;
-
-// let routes = {
-//   "/": "/home",
-//   "/home": "/home",
-//   "/about": "/about",
-//   "/work": "/work",
-//   "/work/1": "/work/1",
-//   "/work/2": "/work/2",
-//   "/work/3": "/work/3",
-//   "/work/4": "/work/4" 
-// };
-
-// let pageTitles = {
-//   "/home": "Connor Soltas",
-//   "/about": "Connor Soltas - About",
-//   "/work": "Connor Soltas - Work",
-//   "/work/1": "Connor Soltas - Building a prototyping tool to enable new ideas",
-//   "/work/2": "Connor Soltas - Vision-setting and vision-enabling",
-//   "/work/3": "Connor Soltas - Rapid results on an aggressive timeline",
-//   "/work/4": "Connor Soltas - What does pricing do for users?",
-//   "/error": "Connor Soltas - page not found"
-// }
-
-// // Ensure the initial load is properly represented in browser history
-// if (!history.state) {
-//   const initialPageURL = routes[path];
-//   history.replaceState({ pageURL: initialPageURL }, '', initialPageURL);
-// }
-
-// // Actually do the initial page load (with error handling)
-// if (routes[path]) {
-//   loadPage(routes[path]);
-// } else {
-//   history.pushState({ pageURL: "/error" }, "", "/error");
-//   loadPage("/error");
-// }
-
-// // When back or forward button is clicked
-// window.addEventListener('popstate', function(event) {
-//   if(event.state) {
-//     loadPage(event.state.pageURL);
-//   }
-// });
-
-document.addEventListener('DOMContentLoaded', () => {
-  const state = sessionStorage.getItem("state");
-  if (state) {
-    console.log('After navigation: ', JSON.retrocycle(JSON.parse(state)));
-    Flip.from(JSON.retrocycle(JSON.parse(state)), {
-      nested: true,
-      duration: 1
-    });
+async function updateNavPosition(url) {
+  if (url != "/home") {
+    const nav = document.querySelector('div.links');
+    const navWidth = nav.offsetWidth;
+    const link1Width = nav.children[0].offsetWidth;
+    const link2Width = nav.children[1].offsetWidth;
+    const link3Width = nav.children[2].offsetWidth;
+    const navOffsets = {
+      "/about": (navWidth - link1Width)/2,
+      "/work": (link3Width - link1Width)/2,
+      "/contact": (link3Width - navWidth)/2
+    } 
+    nav.style.left = navOffsets[url] + "px";
   }
-  sessionStorage.clear();
+}
+
+async function loadPage(url) {  
+  
+  return fetch(`/content${url}-content.html`)
+    
+    // Add the HTML to the page and change the title
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('content-container').innerHTML = html;
+      document.title = pageTitles[url];
+    }).catch(error => {
+      console.error('Error during fetch operation:', error);
+    })
+    
+    // Add interactivity and perform animations
+    .then(() => {
+      
+      // Add the map if we're on project 2
+      if (url == "/work/2") { addMap(); }
+
+      // Add listeners to handle navigation and perform animations
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', async function(e) {
+          e.preventDefault();
+          const dest = this.getAttribute('href');
+          const animationState = Flip.getState("#name-home, #name-work, #name-about, #name-contact");
+          history.pushState({pageURL: dest}, "", dest);
+          await loadPage(dest);
+          await updateNavPosition(dest);
+          Flip.from(animationState, {
+            targets: "#name-home, #name-work, #name-about, #name-contact",
+            duration: 1,
+            ease: 'power4.inOut'
+          });
+        });
+      });
+    }); 
+}
+
+let path = window.location.pathname;
+
+let routes = {
+  "/": "/home",
+  "/home": "/home",
+  "/about": "/about",
+  "/work": "/work",
+  "/work/1": "/work/1",
+  "/work/2": "/work/2",
+  "/work/3": "/work/3",
+  "/work/4": "/work/4",
+  "/contact": "/contact"
+};
+
+let pageTitles = {
+  "/home": "Connor Soltas",
+  "/about": "Connor Soltas - About",
+  "/work": "Connor Soltas - Work",
+  "/work/1": "Connor Soltas - Building a prototyping tool to enable new ideas",
+  "/work/2": "Connor Soltas - Vision-setting and vision-enabling",
+  "/work/3": "Connor Soltas - Rapid results on an aggressive timeline",
+  "/work/4": "Connor Soltas - What does pricing do for users?",
+  "/contact": "Connor Soltas - Contact",
+  "/error": "Connor Soltas - page not found"
+}
+
+// Ensure the initial load is properly represented in browser history
+if (!history.state) {
+  const initialPageURL = routes[path];
+  history.replaceState({ pageURL: initialPageURL }, '', initialPageURL);
+}
+
+// Actually do the initial page load (with error handling)
+if (routes[path]) {
+  loadPage(routes[path]);
+} else {
+  history.pushState({ pageURL: "/error" }, "", "/error");
+  loadPage("/error");
+}
+
+// When back or forward button is clicked
+window.addEventListener('popstate', function(event) {
+  if(event.state) {
+    loadPage(event.state.pageURL);
+  }
 });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   const state = sessionStorage.getItem("state");
+//   if (state) {
+//     console.log('After navigation: ', JSON.retrocycle(JSON.parse(state)));
+//     Flip.from(JSON.retrocycle(JSON.parse(state)), {
+//       nested: true,
+//       duration: 1
+//     });
+//   }
+//   sessionStorage.clear();
+// });
 
 window.addEventListener('scroll', function() {
   var dottedLine = document.getElementById('connector-header-to-main');
@@ -296,13 +323,13 @@ window.addEventListener('scroll', function() {
   }
 });
 
-document.querySelectorAll('.nav-link').forEach(link => {
-  link.addEventListener('click', function(e) {
-    e.preventDefault();
-    const url = this.getAttribute('href');
-    const state = Flip.getState("#name");
-    console.log('Before navigation: ', state);
-    sessionStorage.setItem("state", JSON.stringify(JSON.decycle(state)));
-    window.location.href = url;
-  });
-});
+// document.querySelectorAll('.nav-link').forEach(link => {
+//   link.addEventListener('click', function(e) {
+//     e.preventDefault();
+//     const url = this.getAttribute('href');
+//     const state = Flip.getState("#name");
+//     console.log('Before navigation: ', state);
+//     sessionStorage.setItem("state", JSON.stringify(JSON.decycle(state)));
+//     window.location.href = url;
+//   });
+// });

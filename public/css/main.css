@@ -55,12 +55,24 @@ header {
   display: block;
 }
 
+.display-inline-block {
+  display: inline-block;
+}
+
 .display-none {
   display: none;
 }
 
+.position-relative {
+  position: relative;
+}
+
 .width-100p {
   width: 100%;
+}
+
+.width-240px {
+  width: 240px;
 }
 
 .width-320px {
