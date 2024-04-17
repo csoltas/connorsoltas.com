@@ -2,16 +2,18 @@
     <!-- content for the header will be loaded here -->
 </header>
 
-<main class="flex height-100vh width-320px gap-16px" id="main-container">
+<main class="flex height-100vh width-320px gap-16px animate-prefetch" id="home__main-container">
 
-    <p class="text-justify">
-        <span class="font-mono display-inline-block" id="name-home" data-flip-id="name">Connor Soltas</span> is a designer specializing in product strategy and interfaces for emerging technologies.
-        Most recently working on mechanism design, data viz, and product strategy at Uber.
-    </p>
-    <div class="divider-horizontal"></div>
-    <div class="flex width-100p space-between links home-links">
+    <div class="text-justify width-100p animate-prefetch" id="home__intro-text">
+        <div class="font-mono display-inline-block text-center animate-prefetch" id="name">Connor Soltas</div>
+        <div class="display-inline animate-prefetch" id="home__intro-text__content">is a designer specializing in product strategy and interfaces for emerging technologies.
+        Most recently working on mechanism design, data viz, and product strategy at Uber.</div>
+        </div>
+    <div class="divider-horizontal animate-prefetch"></div>
+    <div class="flex width-100p space-between links home-links position-relative animate-prefetch" id="nav">
         <a href="/about" class="nav-link">About</a>
         <a href="/work" class="nav-link">Work</a>
         <a href="/contact" class="nav-link" id="contact">Contact</a>
     </div>
+    <hr class="height-0 animate-prefetch" id="home__connector-header-to-main"></hr>
 </main>

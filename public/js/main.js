@@ -196,20 +196,59 @@
 //   });
 // }
 
-async function updateNavPosition(url) {
+function calculateNavOffset(url) {
   if (url != "/home") {
     const nav = document.querySelector('div.links');
     const navWidth = nav.offsetWidth;
     const link1Width = nav.children[0].offsetWidth;
     const link2Width = nav.children[1].offsetWidth;
     const link3Width = nav.children[2].offsetWidth;
-    const navOffsets = {
-      "/about": (navWidth - link1Width)/2,
-      "/work": (link3Width - link1Width)/2,
-      "/contact": (link3Width - navWidth)/2
-    } 
-    nav.style.left = navOffsets[url] + "px";
+    switch(url) {
+      case "/about":
+        return (navWidth - link1Width)/2;
+      case "/work":
+        return (link3Width - link1Width)/2;
+      case "/contact":
+        return (link3Width - navWidth)/2;
+    }
   }
+}
+
+async function handleNavEvent(e) {
+  e.preventDefault();
+
+  // Set nav destination
+  const dest = this.getAttribute('href');
+  history.pushState({pageURL: dest}, "", dest);
+
+  // Get state data for animation(s)
+  const postfetchStart = Flip.getState(".animate-postfetch");
+  const prefetchStart = await Flip.getState(".animate-prefetch", {props: 'opacity'});
+
+  // Update the DOM to "leave" final state
+  document.querySelectorAll('.animate-prefetch').forEach(element => {
+    element.classList.add('leaving');
+  });
+  document.getElementById('nav').style.left = calculateNavOffset(dest) + "px";
+
+  // Perform the pre-fetch animation
+  await Flip.from(prefetchStart, {
+    duration: 2,
+    ease: 'power2.inOut',
+    props: 'opacity',
+    nested: true,
+  });
+
+  // // Fetch new content and update the DOM with it
+  // await loadPage(dest);
+
+  // // Peform the post-fetch animation
+  // Flip.from(postfetchStart, {
+  //   targets: ".animate-postfetch",
+  //   duration: 0.5,
+  //   ease: 'power2.inOut',
+  //   nested: true,
+  // });
 }
 
 async function loadPage(url) {  
@@ -220,6 +259,7 @@ async function loadPage(url) {
     .then(response => response.text())
     .then(html => {
       document.getElementById('content-container').innerHTML = html;
+      document.querySelector('div.links').style.left = calculateNavOffset(url) + "px";
       document.title = pageTitles[url];
     }).catch(error => {
       console.error('Error during fetch operation:', error);
@@ -233,19 +273,7 @@ async function loadPage(url) {
 
       // Add listeners to handle navigation and perform animations
       document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', async function(e) {
-          e.preventDefault();
-          const dest = this.getAttribute('href');
-          const animationState = Flip.getState("#name-home, #name-work, #name-about, #name-contact");
-          history.pushState({pageURL: dest}, "", dest);
-          await loadPage(dest);
-          await updateNavPosition(dest);
-          Flip.from(animationState, {
-            targets: "#name-home, #name-work, #name-about, #name-contact",
-            duration: 1,
-            ease: 'power4.inOut'
-          });
-        });
+        link.addEventListener('click', handleNavEvent);
       });
     }); 
 }
@@ -297,18 +325,6 @@ window.addEventListener('popstate', function(event) {
   }
 });
 
-// document.addEventListener('DOMContentLoaded', () => {
-//   const state = sessionStorage.getItem("state");
-//   if (state) {
-//     console.log('After navigation: ', JSON.retrocycle(JSON.parse(state)));
-//     Flip.from(JSON.retrocycle(JSON.parse(state)), {
-//       nested: true,
-//       duration: 1
-//     });
-//   }
-//   sessionStorage.clear();
-// });
-
 window.addEventListener('scroll', function() {
   var dottedLine = document.getElementById('connector-header-to-main');
   var newHeight = Math.max(128 - window.scrollY, 8);
@@ -322,14 +338,3 @@ window.addEventListener('scroll', function() {
     articleNumber.style.display = 'none';
   }
 });
-
-// document.querySelectorAll('.nav-link').forEach(link => {
-//   link.addEventListener('click', function(e) {
-//     e.preventDefault();
-//     const url = this.getAttribute('href');
-//     const state = Flip.getState("#name");
-//     console.log('Before navigation: ', state);
-//     sessionStorage.setItem("state", JSON.stringify(JSON.decycle(state)));
-//     window.location.href = url;
-//   });
-// });
