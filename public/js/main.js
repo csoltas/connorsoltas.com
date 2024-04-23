@@ -201,12 +201,16 @@ function calculateNavOffset(url) {
     const nav = document.querySelector('div.links');
     const navWidth = nav.offsetWidth;
     const link1Width = nav.children[0].offsetWidth;
-    const link2Width = nav.children[1].offsetWidth;
+    const link2Width = nav.children[1].offsetWidth; // This value is not used
     const link3Width = nav.children[2].offsetWidth;
     switch(url) {
       case "/about":
         return (navWidth - link1Width)/2;
       case "/work":
+      case "/work/1":
+      case "/work/2":
+      case "/work/3":
+      case "/work/4":
         return (link3Width - link1Width)/2;
       case "/contact":
         return (link3Width - navWidth)/2;
@@ -218,37 +222,73 @@ async function handleNavEvent(e) {
   e.preventDefault();
 
   // Set nav destination
+  const src = window.location.pathname;
   const dest = this.getAttribute('href');
   history.pushState({pageURL: dest}, "", dest);
 
-  // Get state data for animation(s)
-  const postfetchStart = Flip.getState(".animate-postfetch");
-  const prefetchStart = await Flip.getState(".animate-prefetch", {props: 'opacity'});
+  // Get state data for pre-fetch animation
+  const prefetchStart = await Flip.getState(".animate-prefetch", {props: 'opacity, color'});
 
-  // Update the DOM to "leave" final state
-  document.querySelectorAll('.animate-prefetch').forEach(element => {
-    element.classList.add('leaving');
-  });
-  document.getElementById('nav').style.left = calculateNavOffset(dest) + "px";
+  // Update the DOM to pre-fetch final state
+  const prefetchElements = document.querySelectorAll('.animate-prefetch');
+  const nav = document.getElementById('nav');
+  const flipParams = {
+    // Todo: A static object containing params for each distinct animation "paths" - i.e. each pair of (src, dest) pages
+    // prefetch "animate-to" class (leaving-home, returning-home, leaving)
+    // prefetch duration
+    // postfetch "animate-from" class (entering, ...more?)
+    // postfetch duration
+    // new navOffset
+  }
+
+  let flipDuration = 1
+    onEnterDuration = 0.5;
+  if (src == "/home") {
+    prefetchElements.forEach(element => element.classList.add('leaving-home'));
+    nav.style.left = calculateNavOffset(dest) + "px";
+    flipDuration = 0.8;
+    onEnterDuration = 0.5;
+  } else if (dest == "/home") {
+    prefetchElements.forEach(element => element.classList.add('returning-home'));
+    nav.style.left = "0px";
+    flipDuration = 0.8;
+    onEnterDuration = 0;
+  } else {
+    prefetchElements.forEach(element => element.classList.add('leaving'));
+    nav.style.left = calculateNavOffset(dest) + "px";
+    flipDuration = 0.3;
+    onEnterDuration = 0.5;
+  }
 
   // Perform the pre-fetch animation
   await Flip.from(prefetchStart, {
-    duration: 2,
+    duration: flipDuration,
     ease: 'power2.inOut',
-    props: 'opacity',
     nested: true,
   });
 
-  // // Fetch new content and update the DOM with it
-  // await loadPage(dest);
+  // Get state data for post-fetch animation
+  const postfetchStart = await Flip.getState(".animate-postfetch", {props: 'opacity, color'});
 
-  // // Peform the post-fetch animation
-  // Flip.from(postfetchStart, {
-  //   targets: ".animate-postfetch",
-  //   duration: 0.5,
-  //   ease: 'power2.inOut',
-  //   nested: true,
-  // });
+  // Fetch new content and update the DOM with it
+  await loadPage(dest);
+
+  // Peform the post-fetch animation
+  await Flip.from(postfetchStart, {
+    targets: ".animate-postfetch",
+    duration: 0.3,
+    ease: 'power2.inOut',
+    onEnter: elements => gsap.from(elements, {opacity:0, duration: onEnterDuration}),
+  });
+}
+
+function showNavLinksOnHover() {
+  document.querySelectorAll('header .nav-link').forEach(el => el.style.opacity = "1");
+}
+
+function hideNavLinksOnHover() {
+  if (!Flip.isFlipping("#nav"))
+    document.querySelectorAll('header #nav .nav-link:not(.current)').forEach(el => el.style.opacity = "0");
 }
 
 async function loadPage(url) {  
@@ -272,9 +312,11 @@ async function loadPage(url) {
       if (url == "/work/2") { addMap(); }
 
       // Add listeners to handle navigation and perform animations
-      document.querySelectorAll('.nav-link').forEach(link => {
-        link.addEventListener('click', handleNavEvent);
-      });
+      const header = document.querySelector('header');
+      const navLinks = document.querySelectorAll('.nav-link');
+      header.addEventListener('mouseenter', showNavLinksOnHover);
+      header.addEventListener('mouseleave', hideNavLinksOnHover);
+      navLinks.forEach(link => link.addEventListener('click', handleNavEvent));
     }); 
 }
 
