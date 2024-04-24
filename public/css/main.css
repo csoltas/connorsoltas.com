@@ -98,6 +98,10 @@ header:hover .nav-link {
   height: 8px;
 }
 
+.height-64px {
+  height: 64px;
+}
+
 .height-128px {
   height: 128px;
 }
@@ -131,10 +135,13 @@ header:hover .nav-link {
   background-color: #fff;
 }
 
+.color-black {
+  color: #000;
+}
+
 a {
   font-family: 'IBM Plex Mono';
   color: #0000ff;
-  /* font-weight: bold; */
   text-decoration: none;
   padding: 0;
 }
@@ -144,27 +151,17 @@ a:hover {
   text-decoration: underline;
 }
 
-a.active {
-  color: #000;
-  /* font-weight: normal; */
-  pointer-events: none;
-  cursor: default;  
-}
-
 .name-link {
   color: #000;
   font-weight: normal;
-  text-decoration: none;
-  /* position: absolute; */
 }
 
 .name-link:hover {
-  color: #000;
   text-decoration: underline;
 }
 
-.name-link:visited {
-  color: #000;
+.nav-link.current:hover {
+  color: #0000ff;
 }
 
 @media screen and (max-width: 425px) {
