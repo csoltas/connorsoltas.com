@@ -46,6 +46,10 @@ header:hover .nav-link {
   opacity: 1;
 }
 
+.z-high {
+  z-index: 4000;
+}
+
 .display-inline {
   display: inline;
 }
@@ -164,7 +168,7 @@ a:hover {
   color: #0000ff;
 }
 
-@media screen and (max-width: 425px) {
+/* @media screen and (max-width: 425px) {
   header {
     width: calc(100vw - 32px);
     padding-left: 16px;
@@ -189,9 +193,9 @@ a:hover {
     width: 100%;
     margin: 0;
   }
-}
+} */
 
-@media screen and (max-width: 320px) {
+/* @media screen and (max-width: 320px) {
   .name-link {
     display: none;
   }
@@ -199,7 +203,7 @@ a:hover {
   .header-links {
     width: 100%;
   }
-}
+} */
 
 .flex {
   display: flex;
@@ -230,12 +234,12 @@ main {
   min-height: 100vh;
 }
 
-@media screen and (max-width: 425px) {
+/* @media screen and (max-width: 425px) {
   main {
     width: calc(100vw - 32px);
     padding: 80px 16px;
   }
-}
+} */
 
 p {
   margin: 0;
@@ -413,11 +417,11 @@ h3 {
   margin: 0;
 }
 
-@media screen and (max-width: 425px) {
+/* @media screen and (max-width: 425px) {
   h1 {
     font-size: 24px;
   }
-}
+} */
 
 .case-studies {
   display: flex;
@@ -447,11 +451,11 @@ h3 {
   margin-right: 16px;
 }
 
-@media screen and (max-width: 425px) {
+/* @media screen and (max-width: 425px) {
   .case-studies li, .dotted-divider {
     font-size: 24px;
   }
-}
+} */
 
 .dotted-divider {
   width: 100%;
@@ -522,7 +526,7 @@ hr.xxs {
   height: 10px;
 }
 
-@media screen and (max-width: 425px) {
+/* @media screen and (max-width: 425px) {
   hr.lg {
     height: 64px;
   }
@@ -530,7 +534,7 @@ hr.xxs {
   hr.sm {
     height: 48px;
   }
-}
+} */
 
 .media-container {
   width: 100vw;
@@ -738,5 +742,40 @@ img#ia-trends {
   img#ia-trends {
     width: 79.6vw;
     padding-left: 56.6vw;
+  }
+}
+
+@media screen and (max-width: 425px) {  
+  .mobile-width-100p {
+    width: 100%;
+  }
+
+  .mobile-pad-lr-16px {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .mobile-width-100p-minuspadding {
+    width: calc(100% - 32px);
+  }
+
+  .mobile-minheight-unset {
+    min-height: unset;
+  }
+
+  .mobile-height-128px {
+    height: 128px;
+  }
+
+  .mobile-text-left {
+    /* text-align: left; */
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  header .nav-link {
+    opacity: 1;
   }
 }

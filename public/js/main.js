@@ -324,7 +324,7 @@ async function loadPage(url) {
     .then(() => {
       
       // Add the map if we're on project 2
-      if (url == "/work/3") { addMap(); }
+      if (url == "/work/2") { addMap(); }
 
       // Add listeners to handle navigation and perform animations
       const header = document.querySelector('header');
@@ -349,7 +349,7 @@ let routes = {
   "/work/2": "/work/2",
   "/work/3": "/work/3",
   "/work/4": "/work/4",
-  "/work/5": "/work/5",
+  // "/work/5": "/work/5",
   "/contact": "/contact"
 };
 
@@ -357,11 +357,11 @@ let pageTitles = {
   "/home": "Connor Soltas",
   "/about": "Connor Soltas - About",
   "/work": "Connor Soltas - Work",
-  "/work/1": "Connor Soltas - Building a prototyping tool to enable new ideas",
-  "/work/2": "Connor Soltas - Building a prototyping tool to enable new ideas",
-  "/work/3": "Connor Soltas - Vision-setting and vision-enabling",
-  "/work/4": "Connor Soltas - Rapid results on an aggressive timeline",
-  "/work/5": "Connor Soltas - What does pricing do for users?",
+  "/work/1": "Connor Soltas - On setting a vision (and actually getting some of it built)",
+  // "/work/2": "Connor Soltas - Building a prototyping tool to enable new ideas",
+  "/work/2": "Connor Soltas - Building design tools to break out of old thinking",
+  "/work/3": "Connor Soltas - Rapid results on an aggressive timeline",
+  "/work/4": "Connor Soltas - What does pricing do for users?",
   "/contact": "Connor Soltas - Contact",
   "/error": "Connor Soltas - page not found"
 }
